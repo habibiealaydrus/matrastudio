@@ -1,0 +1,131 @@
+@import url("https://fonts.googleapis.com/css2?family=Abel&display=swap");
+
+body {
+    margin: 0px;
+    font-family: "Abel", san-serif;
+}
+.nav-link:hover {
+    text-decoration: underline;
+    text-underline-offset: 20%;
+}
+.profile {
+    filter: grayscale(100%);
+}
+.profile:hover {
+    filter: grayscale(50%);
+}
+.bannerprocess {
+    background-image: linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 1),
+            rgba(0, 0, 0, 0)
+        ),
+        url("../assets/img/Sungai-1-2-1440x720.jpg");
+    background-repeat: no-repeat, repeat;
+    filter: grayscale(100%);
+    height: 500px;
+}
+.squareinbanner {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 70px 0;
+}
+
+.project {
+    position: relative;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: 0.5s ease;
+    background-color: white;
+}
+
+.project:hover .overlay {
+    opacity: 0.9;
+}
+
+.text {
+    color: black;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.news {
+    transition: transform 0.7s; /* Animation */
+}
+.news:hover {
+    transform: scale(1.05);
+}
+.mobilemenu {
+    z-index: 1;
+    height: 100vh;
+    font-size: 200%;
+}
+.sublinkmobile {
+    font-size: 200%;
+    padding-top: 5%;
+}
+
+.bodynews {
+    background-color: black;
+}
+
+.headernews {
+    background-color: white;
+}
+.headernews:hover {
+    background-color: darkgray;
+}
+.newscontent {
+    background-color: black;
+    color: white;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 5%;
+    text-decoration: none;
+}
+.newscontent:hover {
+    background-color: white;
+    color: black;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+.news {
+    width: 400px;
+}
+.required {
+    color: brown;
+    font-size: 0.6rem;
+}
+.small-box {
+    border-radius: 5px;
+    color: white;
+}
+.smallboxfooter {
+    background-color: rgba(0, 0, 0, 0.15);
+    display: block;
+    padding: 3px 0;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    z-index: 10;
+    color: #ffff;
+}
+.logoclient {
+    width: 100px;
+    display: table;
+    border: 1px;
+}
