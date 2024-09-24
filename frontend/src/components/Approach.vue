@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-dark text-center py-3 container-fluid">
+    <div class="bg-dark text-center py-3 my-0 container-fluid">
         <div class="row">
             <h1 class="text-white text-center col-12">
                 OUR APPROACH TO INNOVATION

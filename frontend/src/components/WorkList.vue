@@ -39,7 +39,7 @@
                             <td class="d-flex flex-column gap-1">
                                 <button
                                     class="btn btn-primary"
-                                    @click="getdetailproject(work.id)"
+                                    @click.prevent="getdetailproject(work.id)"
                                     data-bs-toggle="modal"
                                     data-bs-target="#detailModal"
                                 >
@@ -109,7 +109,7 @@
                                         </label>
                                         <br />
                                         <img
-                                            :src="`http://127.0.0.1:8000/storage/logoclient/${detailproject.logo_client}`"
+                                            :src="`${baseURL}/storage/logoclient/${detailproject.logo_client}`"
                                             alt=""
                                             class="img-fluid"
                                             style="width: 10%"
@@ -133,9 +133,9 @@
                                         </label>
                                         <br />
                                         <img
-                                            :src="`http://127.0.0.1:8000/storage/projectpicture/${detailproject.main_pic}`"
                                             alt=""
                                             class="w-25 img-fluid"
+                                            :src="`${baseURL}/storage/projectpicture/${detailproject.main_pic}`"
                                         />
                                     </div>
                                     <div class="mb-3">
@@ -152,37 +152,177 @@
                                             disabled
                                         ></textarea>
                                     </div>
+                                    <div class="mb-3">
+                                        <label
+                                            for="exampleFormControlTextarea1"
+                                            class="form-label"
+                                            >Location</label
+                                        >
+                                        <input
+                                            class="form-control"
+                                            id="location"
+                                            rows="3"
+                                            :value="`${detailproject.location}`"
+                                            disabled
+                                        />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label
+                                            for="exampleFormControlTextarea1"
+                                            class="form-label"
+                                            >Year</label
+                                        >
+                                        <input
+                                            class="form-control"
+                                            id="year"
+                                            rows="3"
+                                            :value="`${detailproject.year}`"
+                                            disabled
+                                        />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label
+                                            for="exampleFormControlTextarea1"
+                                            class="form-label"
+                                            >Energy Savings</label
+                                        >
+                                        <input
+                                            class="form-control"
+                                            id="energy_savings"
+                                            rows="3"
+                                            :value="`${detailproject.energy_savings}`"
+                                            disabled
+                                        />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label
+                                            for="exampleFormControlTextarea1"
+                                            class="form-label"
+                                            >Water Savings</label
+                                        >
+                                        <input
+                                            class="form-control"
+                                            id="water_savings"
+                                            rows="3"
+                                            :value="`${detailproject.water_savings}`"
+                                            disabled
+                                        />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label
+                                            for="exampleFormControlTextarea1"
+                                            class="form-label"
+                                            >Carbon Reduction</label
+                                        >
+                                        <input
+                                            class="form-control"
+                                            id="carbon_reduction"
+                                            rows="3"
+                                            :value="`${detailproject.carbon_reduction}`"
+                                            disabled
+                                        />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label
+                                            for="exampleFormControlTextarea1"
+                                            class="form-label"
+                                            >Designer 1</label
+                                        >
+                                        <input
+                                            class="form-control"
+                                            id="designer1"
+                                            rows="3"
+                                            :value="`${detailproject.designer1}`"
+                                            disabled
+                                        />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label
+                                            for="exampleFormControlTextarea1"
+                                            class="form-label"
+                                            >Designer 2</label
+                                        >
+                                        <input
+                                            class="form-control"
+                                            id="designer2`"
+                                            rows="3"
+                                            :value="`${detailproject.designer2}`"
+                                            disabled
+                                        />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label
+                                            for="exampleFormControlTextarea1"
+                                            class="form-label"
+                                            >Designer 3</label
+                                        >
+                                        <input
+                                            class="form-control"
+                                            id="designer3`"
+                                            rows="3"
+                                            :value="`${detailproject.designer3}`"
+                                            disabled
+                                        />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label
+                                            for="exampleFormControlTextarea1"
+                                            class="form-label"
+                                            >Designer 4</label
+                                        >
+                                        <input
+                                            class="form-control"
+                                            id="designer4`"
+                                            rows="3"
+                                            :value="`${detailproject.designer4}`"
+                                            disabled
+                                        />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label
+                                            for="exampleFormControlTextarea1"
+                                            class="form-label"
+                                            >Designer 5</label
+                                        >
+                                        <input
+                                            class="form-control"
+                                            id="designer5"
+                                            rows="3"
+                                            :value="`${detailproject.designer5}`"
+                                            disabled
+                                        />
+                                    </div>
                                 </div>
                                 <div class="col-md-6 d-flex flex-wrap gap-2">
                                     <img
-                                        :src="`http://127.0.0.1:8000/storage/projectpicture/${detailproject.pic1}`"
-                                        alt=""
                                         class="img-fluid"
+                                        alt=""
+                                        :src="`${baseURL}/storage/projectpicture/${detailproject.pic1}`"
                                     />
                                     <img
                                         class="img-fluid"
-                                        :src="`http://127.0.0.1:8000/storage/projectpicture/${detailproject.pic2}`"
                                         alt=""
+                                        :src="`${baseURL}/storage/projectpicture/${detailproject.pic2}`"
                                     />
                                     <img
                                         class="img-fluid"
-                                        :src="`http://127.0.0.1:8000/storage/projectpicture/${detailproject.pic3}`"
                                         alt=""
+                                        :src="`${baseURL}/storage/projectpicture/${detailproject.pic3}`"
                                     />
                                     <img
                                         class="img-fluid"
-                                        :src="`http://127.0.0.1:8000/storage/projectpicture/${detailproject.pic4}`"
                                         alt=""
+                                        :src="`${baseURL}/storage/projectpicture/${detailproject.pic4}`"
                                     />
                                     <img
                                         class="img-fluid"
-                                        :src="`http://127.0.0.1:8000/storage/projectpicture/${detailproject.pic5}`"
                                         alt=""
+                                        :src="`${baseURL}/storage/projectpicture/${detailproject.pic5}`"
                                     />
                                     <img
                                         class="img-fluid"
-                                        :src="`http://127.0.0.1:8000/storage/projectpicture/${detailproject.pic6}`"
                                         alt=""
+                                        :src="`${baseURL}/storage/projectpicture/${detailproject.pic6}`"
                                     />
                                 </div>
                             </div>
@@ -193,9 +333,6 @@
                                     data-bs-dismiss="modal"
                                 >
                                     Close
-                                </button>
-                                <button type="submit" class="btn btn-primary">
-                                    Add Project
                                 </button>
                             </div>
                         </form>
@@ -270,7 +407,6 @@
                                                 alt=""
                                                 class="img-fluid mb-1"
                                                 style="width: 10%"
-                                                :src="`http://127.0.0.1:8000/storage/logoclient/${existingdata.logo_client}`"
                                             />
                                             <input
                                                 accept=".jpg, .png, .jpeg, .gif"
@@ -305,7 +441,6 @@
                                             <img
                                                 alt=""
                                                 class="w-25 img-fluid mb-1"
-                                                :src="`http://127.0.0.1:8000/storage/projectpicture/${existingdata.main_pic}`"
                                             />
                                             <input
                                                 ref="main_pic"
@@ -338,7 +473,6 @@
                                             <img
                                                 alt=""
                                                 class="w-25 img-fluid mb-1"
-                                                :src="`http://127.0.0.1:8000/storage/projectpicture/${existingdata.pic1}`"
                                             />
                                             <input
                                                 ref="pic1"
@@ -356,7 +490,6 @@
                                             <img
                                                 alt=""
                                                 class="w-25 img-fluid mb-1"
-                                                :src="`http://127.0.0.1:8000/storage/projectpicture/${existingdata.pic2}`"
                                             />
                                             <input
                                                 ref="pic2"
@@ -374,7 +507,6 @@
                                             <img
                                                 alt=""
                                                 class="w-25 img-fluid mb-1"
-                                                :src="`http://127.0.0.1:8000/storage/projectpicture/${existingdata.pic3}`"
                                             />
                                             <input
                                                 ref="pic3"
@@ -392,7 +524,6 @@
                                             <img
                                                 alt=""
                                                 class="w-25 img-fluid"
-                                                :src="`http://127.0.0.1:8000/storage/projectpicture/${existingdata.pic4}`"
                                             />
                                             <input
                                                 ref="pic4"
@@ -410,7 +541,6 @@
                                             <img
                                                 alt=""
                                                 class="w-25 img-fluid"
-                                                :src="`http://127.0.0.1:8000/storage/projectpicture/${existingdata.pic5}`"
                                             />
                                             <input
                                                 ref="pic5"
@@ -428,7 +558,6 @@
                                             <img
                                                 alt=""
                                                 class="w-25 img-fluid"
-                                                :src="`http://127.0.0.1:8000/storage/projectpicture/${existingdata.pic6}`"
                                             />
                                             <input
                                                 ref="pic6"
@@ -471,21 +600,21 @@ import { ref, onMounted } from "vue";
 import FormWork from "../components/FormWork.vue";
 
 const project = ref([]);
+const baseURL = axios.defaults.baseURL;
 
-const urlproject = "/client";
+const urlproject = baseURL + "/api/client";
 
 const type_project = ref([]);
 
 const getproject = async () => {
     const response = await axios.get(urlproject);
-
     project.value = response.data.data;
 };
 
 const deleteproject = async (e) => {
     const id = e;
 
-    const urldeletenews = "http://127.0.0.1:8000/api/deletenews/" + id;
+    const urldeletenews = baseURL + "/api/deletenews/" + id;
 
     const response = await axios.delete(urldeletenews);
     alert("Project deleted");
@@ -495,11 +624,10 @@ const detailproject = ref([]);
 
 const getdetailproject = async (e) => {
     const idDetail = e;
-    const urlDetailProject =
-        "http://127.0.0.1:8000/api/clientdetail/" + idDetail;
+    const urlDetailProject = baseURL + "/api/clientdetail/" + idDetail;
     const response = await axios.get(urlDetailProject);
     detailproject.value = response.data.data;
-    type_project.value = response.data.data.type_project;
+    //type_project.value = response.data.data.type_project;
 };
 
 const existingdata = ref([]);
@@ -507,16 +635,16 @@ const optiontipe = ref([]);
 
 const getdetailtargetupdate = async (e) => {
     const target = e;
-    const urlDetailProject = "http://127.0.0.1:8000/api/clientdetail/" + target;
-    const response = await axios.get(urlDetailProject);
+    // const urlDetailProject = baseURL + "/api/clientdetail/" + target;
+    // const response = await axios.get(urlDetailProject);
 
-    type_project.value = response.data.data.type_project;
-    if (type_project.value == "Arsitektur") {
-        optiontipe.value = "Green Building";
-    } else {
-        optiontipe.value = "Arsitektur";
-    }
-    existingdata.value = response.data.data;
+    // type_project.value = response.data.data.type_project;
+    // if (type_project.value == "Arsitektur") {
+    //     optiontipe.value = "Green Building";
+    // } else {
+    //     optiontipe.value = "Arsitektur";
+    // }
+    // existingdata.value = response.data.data;
 };
 
 const getLogo = (e) => {

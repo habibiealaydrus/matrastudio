@@ -1,5 +1,5 @@
 <template>
-    <div class="row px-4 py-2 justify-content-center">
+    <div class="row px-4 py-2 justify-content-center bg-white">
         <div class="col-md-4" v-for="blog in blogs">
             <div class="news px-5">
                 <a
@@ -8,7 +8,7 @@
                     style="color: black"
                 >
                     <img
-                        :src="`http://127.0.0.1:8000/storage/blog/${blog.main_img}`"
+                        :src="`http://192.168.101.44:5000/storage/blog/${blog.main_img}`"
                         alt=""
                         class="w-100"
                     />
@@ -25,7 +25,8 @@ import axios from "axios";
 import { ref, onMounted } from "vue";
 
 const blogs = ref([]);
-const urlblog = "http://127.0.0.1:8000/api/allblog";
+const baseURL = axios.defaults.baseURL;
+const urlblog = baseURL + "/api/allblog";
 
 const getblogs = async () => {
     try {

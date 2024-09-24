@@ -125,7 +125,8 @@ import axios from "axios";
 import { ref, onMounted } from "vue";
 
 const inquiry = ref([]);
-const urlinquiry = "/inqurymessagelimited";
+const baseURL = axios.defaults.baseURL;
+const urlinquiry = baseURL + "/api/inqurymessagelimited";
 
 const getinquiry = async () => {
     try {
@@ -135,7 +136,7 @@ const getinquiry = async () => {
 };
 
 const mesagges = ref([]);
-const urlmessages = "http://127.0.0.1:8000/api/allmessage";
+const urlmessages = baseURL + "/api/allmessage";
 
 const getmessages = async () => {
     const response = await axios.get(urlmessages);
@@ -144,7 +145,7 @@ const getmessages = async () => {
 };
 
 const blog = ref([]);
-const urlblog = "http://127.0.0.1:8000/api/allblog";
+const urlblog = baseURL + "/api/allblog";
 
 const getblog = async () => {
     const response = await axios.get(urlblog);
@@ -153,7 +154,7 @@ const getblog = async () => {
 };
 
 const news = ref([]);
-const urlnews = "http://127.0.0.1:8000/api/newsall";
+const urlnews = baseURL + "/api/newsall";
 
 const getnews = async () => {
     const response = await axios.get(urlnews);
@@ -162,7 +163,7 @@ const getnews = async () => {
 };
 
 const project = ref([]);
-const urlproject = "http://127.0.0.1:8000/api/client";
+const urlproject = baseURL + "/api/client";
 
 const getproject = async () => {
     const response = await axios.get(urlproject);
@@ -171,7 +172,7 @@ const getproject = async () => {
 };
 
 const event = ref([]);
-const urlevent = "http://127.0.0.1:8000/api/event";
+const urlevent = baseURL + "/api/event";
 
 const getevent = async () => {
     const response = await axios.get(urlevent);

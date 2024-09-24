@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="bg-white">
         <div class="bannerprocess text-center p-5">
             <div class="container">
                 <div class="row justify-content-center">

@@ -4,9 +4,12 @@ import Navigation from "@/components/Navigation.vue";
 </script>
 
 <template>
-    <div style="background-color: white">
+    <div>
         <Navigation />
-        <RouterView />
+
+        <div class="bg-dark" style="height: 95dvh">
+            <RouterView />
+        </div>
     </div>
 </template>
 

@@ -79,7 +79,8 @@ import { ref, onMounted } from "vue";
 const projectclient_name = ref("");
 const projectclient_img = ref("");
 
-const urladdimgclient = "/addimageclient";
+const baseURL = axios.defaults.baseURL;
+const urladdimgclient = baseURL + "/api/addimageclient";
 
 const clearInput = () => {
     projectclient_name.value = "";

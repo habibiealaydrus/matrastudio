@@ -398,7 +398,8 @@ import axios from "axios";
 import { ref, onMounted } from "vue";
 
 const messages = ref([]);
-const urlmessages = "/allmessage";
+const baseURL = axios.defaults.baseURL;
+const urlmessages = baseURL + "/api/allmessage";
 const messagedetail = ref([]);
 const inquiries = ref([]);
 const inquirydetail = ref([]);
@@ -417,7 +418,7 @@ const getdetailmesagge = async (e) => {
 };
 
 const getinquiries = async () => {
-    const urlinquiries = "/inquiries";
+    const urlinquiries = baseURL + "/api/inquiries";
     const response = await axios.get(urlinquiries);
 
     inquiries.value = response.data.data;

@@ -61,8 +61,9 @@ import { RouterLink, RouterView } from "vue-router";
 import axios from "axios";
 
 const tokenLogin = localStorage.getItem("token");
+const baseURL = axios.defaults.baseURL;
 
-const urlLogout = "http://127.0.0.1:8000/api/logout";
+const urlLogout = baseURL + "/api/logout";
 const config = {
     headers: { Authorization: `Bearer ${tokenLogin}` },
 };

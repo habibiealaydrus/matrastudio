@@ -92,7 +92,9 @@ const name = ref("");
 const email = ref("");
 const password = ref("");
 
-const urladduser = "/register";
+const baseURL = axios.defaults.baseURL;
+
+const urladduser = baseURL + "/api/register";
 
 const clearInput = () => {
     name.value = "";
@@ -115,7 +117,7 @@ const adduser = async () => {
         const response = await axios.post(urladduser, datauser, config);
 
         alert("user has been added");
-        window.location.href = "/admin/users";
+        window.location.href = "/admin/user";
     } catch (error) {
         console.log(error.data.data);
     }

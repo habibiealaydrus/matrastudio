@@ -36,7 +36,7 @@
                             <td>{{ blog.title_blog }}</td>
                             <td class="text-center">
                                 <img
-                                    :src="`http://127.0.0.1:8000/storage/blog/${blog.main_img}`"
+                                    :src="`${baseURL}/storage/blog/${blog.main_img}`"
                                     alt=""
                                     class="w-50"
                                 />
@@ -114,7 +114,8 @@ import { ref, onMounted } from "vue";
 import FormAddBlog from "../components/FormAddBlog.vue";
 
 const blogs = ref([]);
-const urlblog = "/allblog";
+const baseURL = axios.defaults.baseURL;
+const urlblog = baseURL + "/api/allblog";
 
 const getblog = async () => {
     const response = await axios.get(urlblog);

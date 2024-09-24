@@ -98,7 +98,7 @@
                         <div class="modal-body h-100">
                             <div v-if="`${idEvent}`">
                                 <iframe
-                                    :src="`http://localhost:5173/event/detail/${idEvent}`"
+                                    :src="`${baseURL}/event/detail/${idEvent}`"
                                     frameborder="0"
                                     class="w-100"
                                     style="min-height: 75vh"
@@ -126,7 +126,8 @@ const start_time = ref("");
 const end_time = ref("");
 
 const event = ref([]);
-const urlevent = "/event";
+const baseURL = axios.defaults.baseURL;
+const urlevent = baseURL + "/api/event";
 const idEvent = ref([]);
 
 const getevent = async () => {

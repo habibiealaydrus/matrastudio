@@ -35,11 +35,7 @@
                             <th scope="row">{{ index + 1 }}</th>
                             <td>{{ client.projectclient_name }}</td>
                             <td class="text-center">
-                                <img
-                                    :src="`http://127.0.0.1:8000/storage/projectclients/${client.projectclient_img}`"
-                                    alt=""
-                                    class="w-50"
-                                />
+                                <img alt="" class="w-50" />
                             </td>
                             <td
                                 class="d-flex flex-column gap-3 align-items-center h-100"
@@ -96,11 +92,7 @@
                                 {{ idImage.projectclient_name }}
                             </div>
                             <div>
-                                <img
-                                    :src="`http://127.0.0.1:8000/storage/projectclients/${idImage.projectclient_img}`"
-                                    frameborder="0"
-                                    class="w-100"
-                                />
+                                <img frameborder="0" class="w-100" />
                             </div>
                         </div>
                     </div>
@@ -116,7 +108,8 @@ import { ref, onMounted } from "vue";
 import FormAddProjectclient from "../components/FormAddProjectclient.vue";
 
 const clients = ref([]);
-const urlclient = "/allimageclient";
+const baseURL = axios.defaults.baseURL;
+const urlclient = baseURL + "/api/allimageclient";
 
 const getclient = async () => {
     const response = await axios.get(urlclient);
@@ -125,7 +118,7 @@ const getclient = async () => {
 };
 
 const idImage = ref([]);
-const urlidetailclient = "/allimageclientid/";
+const urlidetailclient = baseURL + "/api/allimageclientid/";
 
 const previewimageclient = async (e) => {
     const id = e;
@@ -135,8 +128,8 @@ const previewimageclient = async (e) => {
 
 const deleteclient = async (e) => {
     const idDeleteclient = e;
-    const url = axios.defaults.baseURL;
-    const apideleteclient = url + "/deleteimageclient/";
+
+    const apideleteclient = baseURL + "/api/deleteimageclient/";
     const urlDeleteclient = apideleteclient + idDeleteclient;
 
     const response = await axios.delete(urlDeleteclient);

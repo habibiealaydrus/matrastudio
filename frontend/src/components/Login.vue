@@ -74,7 +74,9 @@ import { ref, onMounted } from "vue";
 
 const email = ref([]);
 const password = ref([]);
-const urlLogin = "/login";
+const baseURL = axios.defaults.baseURL;
+
+const urlLogin = baseURL + "/api/login";
 
 const login = async () => {
     await axios

@@ -1,5 +1,5 @@
 <template>
-    <div class="row px-4 py-2">
+    <div class="row px-4 py-2 bg-white">
         <div class="col-md-4 mx-auto" v-for="event in events">
             <div class="news px-5 justify-content-center">
                 <a
@@ -8,7 +8,7 @@
                     style="color: black"
                 >
                     <img
-                        :src="`http://127.0.0.1:8000/storage/event/${event.pic_event}`"
+                        :src="`http://192.168.101.44:5000/storage/event/${event.pic_event}`"
                         alt=""
                         class="w-100"
                     />
@@ -27,7 +27,7 @@ import axios from "axios";
 import { ref, onMounted } from "vue";
 
 const events = ref([]);
-const urlevent = "http://127.0.0.1:8000/api/event";
+const urlevent = "http://192.168.101.44:5000/api/event";
 
 const getevent = async () => {
     try {

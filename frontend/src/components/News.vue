@@ -18,7 +18,7 @@
                             id="headernews"
                         >
                             <img
-                                :src="`http://127.0.0.1:8000/storage/news/logo_news/${item.logo_news}`"
+                                :src="`http://192.168.101.44:5000/storage/news/logo_news/${item.logo_news}`"
                                 alt=""
                                 class="w-100 p-5"
                             />
@@ -41,7 +41,7 @@ import axios from "axios";
 import { ref, onMounted } from "vue";
 
 const news = ref([]);
-const urlnews = "http://127.0.0.1:8000/api/newsall";
+const urlnews = "http://192.168.101.44:5000/api/newsall";
 
 const getnews = async () => {
     try {

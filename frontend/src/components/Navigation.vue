@@ -1,9 +1,9 @@
 <template>
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg bg-white">
         <div class="container-fluid">
             <img
                 src="../assets/img/logo-matra-studio.png"
-                class="w-25"
+                style="width: 15%"
                 alt=""
             />
 
@@ -16,6 +16,7 @@
                 aria-expanded="false"
                 aria-label="Toggle navigation"
                 @click="NavButton"
+                id="buttonclose"
             >
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -23,7 +24,7 @@
                 class="collapse navbar-collapse nav justify-content-end"
                 id="navbarSupportedContent"
             >
-                <ul class="navbar-nav mb-2 mb-lg-0">
+                <ul class="navbar-nav mb-0 mb-lg-0">
                     <li class="nav-item">
                         <RouterLink class="nav-link" aria-current="page" to="/">
                             Home</RouterLink
@@ -61,7 +62,7 @@
                         <ul
                             class="dropdown-menu bg-white"
                             style="
-                                margin-top: -4dvh;
+                                margin-top: 0dvh;
                                 border: none;
                                 background-color: transparent;
                             "
@@ -93,7 +94,7 @@
                             >Contact</RouterLink
                         >
                     </li>
-                    <div class="d-flex flex-row mb-3 mx-auto">
+                    <div class="d-flex flex-row mx-auto">
                         <li class="nav-item">
                             <a class="nav-link p-2" href="#">
                                 <font-awesome-icon

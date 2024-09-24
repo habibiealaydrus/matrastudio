@@ -189,8 +189,8 @@ const getdetailproject = async (e) => {
     try {
         const iddetail = e;
         console.log(iddetail);
-        // const urlgetdetailproject = "/detailclient";
-        // const response = await axios.get(urlgetdetailproject);
+        const urlgetdetailproject = "http://192.168.17.42:5000/detailclient";
+        const response = await axios.get(urlgetdetailproject);
         // console.log(detailproject);
     } catch (error) {
         console.log(error);

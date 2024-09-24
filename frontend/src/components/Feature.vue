@@ -1,5 +1,7 @@
 <template>
-    <div class="bg-light bg-gradient justify-content-center text-center">
+    <div
+        class="container-fluid bg-light bg-gradient justify-content-center text-center bg-white"
+    >
         <h1 class="h1 text-center pt-3">FEATURE PROJECTS</h1>
         <div class="container-fluid">
             <div class="row px-5">
@@ -7,8 +9,8 @@
                     <a :href="`/work/detail/${project.id}`" class="nav-link">
                         <img
                             class="p-2"
-                            style="width: 400px; height: 300px"
-                            :src="`http://127.0.0.1:8000/storage/projectpicture/${project.main_pic}`"
+                            style="width: 30vw; height: 20vw"
+                            :src="`${baseURL}/storage/projectpicture/${project.main_pic}`"
                             alt=""
                         />
                     </a>
@@ -26,11 +28,9 @@
 import { ref, onMounted } from "vue";
 import axios from "axios";
 
-const urlimage = "http://127.0.0.1:8000/storage/projectpicture/";
-
 const feature = ref([]);
-const urlfeature = "http://127.0.0.1:8000/api/limitedclient";
-const urlprojectpicture = "http://127.0.0.1:8000/storage/projectpicture";
+const baseURL = axios.defaults.baseURL;
+const urlfeature = baseURL + "/api/limitedclient";
 
 const getfeatureproject = async () => {
     try {

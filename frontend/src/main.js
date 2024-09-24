@@ -5,7 +5,7 @@ import App from "./App.vue";
 import router from "./router";
 import axios from "axios";
 
-axios.defaults.baseURL = "http://127.0.0.1:8000/api";
+axios.defaults.baseURL = "http://192.168.20.169:5000";
 
 /* import the fontawesome core */
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -19,6 +19,9 @@ import {
     faArrowLeft,
     faImage,
     faEnvelope,
+    faBolt,
+    faTint,
+    faCloud,
 } from "@fortawesome/free-solid-svg-icons";
 import {
     faFacebook,
@@ -35,7 +38,10 @@ library.add(
     faYoutube,
     faArrowLeft,
     faImage,
-    faEnvelope
+    faEnvelope,
+    faBolt,
+    faTint,
+    faCloud
 );
 
 const app = createApp(App);

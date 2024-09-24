@@ -1,5 +1,5 @@
 <template>
-    <div class="text-center">
+    <div class="text-center bg-white container-fluid" style="z-index: -100">
         <h1 class="h1 text-uppercase pt-5">About</h1>
         <div class="container">
             <p class="pt-2 px-20 text-start">
@@ -68,7 +68,7 @@
                     <img
                         alt=""
                         class="img-fluid"
-                        :src="`http://127.0.0.1:8000/storage/projectclients/${logo.projectclient_img}`"
+                        :src="`http://192.168.101.44:5000/storage/projectclients/${logo.projectclient_img}`"
                     />
                 </div>
             </div>
@@ -80,7 +80,9 @@
 import axios from "axios";
 import { ref, onMounted } from "vue";
 
-const urllogoclient = "http://127.0.0.1:8000/api/allimageclient";
+const baseURL = axios.defaults.baseURL;
+
+const urllogoclient = baseURL + "/api/allimageclient";
 const logoclients = ref([]);
 
 const getlogoclient = async () => {

@@ -92,7 +92,7 @@
                             <div class="modal-body h-100">
                                 <div v-if="`${idNews}`">
                                     <iframe
-                                        :src="`http://localhost:5173/news/detail/${idNews}`"
+                                        :src="`http://192.168.1.97:5000/news/detail/${idNews}`"
                                         frameborder="0"
                                         class="w-100"
                                         style="min-height: 75vh"
@@ -114,7 +114,8 @@ import { ref, onMounted } from "vue";
 import FormAddNews from "../components/FormAddNews.vue";
 
 const news = ref([]);
-const urlnews = "/newsall";
+const baseURL = axios.defaults.baseURL;
+const urlnews = baseURL + "/api/newsall";
 
 const getnews = async () => {
     const response = await axios.get(urlnews);
@@ -130,8 +131,7 @@ const getIdNews = (e) => {
 const deleteNews = async (e) => {
     getIdNews(e);
     //alert(idNews.value);
-    const urldeletenews =
-        "http://127.0.0.1:8000/api/deletenews/" + idNews.value;
+    const urldeletenews = baseURL + "/api/deletenews/" + idNews.value;
     const response = await axios.delete(urldeletenews);
     alert(response);
 };

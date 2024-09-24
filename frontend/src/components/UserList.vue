@@ -110,7 +110,9 @@ import { ref, onMounted } from "vue";
 import FormAddUser from "../components/FormAddUser.vue";
 
 const users = ref([]);
-const urlusers = "/alluser";
+const baseURL = axios.defaults.baseURL;
+
+const urlusers = baseURL + "/api/alluser";
 const detailuser = ref([]);
 
 const getusers = async () => {

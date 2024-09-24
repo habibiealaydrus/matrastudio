@@ -35,10 +35,13 @@
                                             id="type_project"
                                         >
                                             <option value="Arsitektur">
-                                                Arsitektur
+                                                Architecture
                                             </option>
                                             <option value="Green building">
-                                                Green Building
+                                                Sustainability
+                                            </option>
+                                            <option value="Green building">
+                                                Instalation
                                             </option>
                                         </select>
                                     </div>
@@ -101,8 +104,127 @@
                                             v-model="article"
                                         ></textarea>
                                     </div>
+                                    <div class="mb-3">
+                                        <label class="form-label"
+                                            >Location</label
+                                        >
+                                        <input
+                                            v-model="location"
+                                            type="text"
+                                            class="form-control"
+                                            id="location"
+                                        />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Year</label>
+                                        <input
+                                            v-model="year"
+                                            type="text"
+                                            class="form-control"
+                                            id="year"
+                                        />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label"
+                                            >Energy Savings</label
+                                        >
+                                        <input
+                                            v-model="energy_savings"
+                                            type="number"
+                                            class="form-control"
+                                            id="energy_savings"
+                                        />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label"
+                                            >Water Savings</label
+                                        >
+                                        <input
+                                            v-model="water_savings"
+                                            type="number"
+                                            class="form-control"
+                                            id="water_savings"
+                                        />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label"
+                                            >Carbon Reduction</label
+                                        >
+                                        <input
+                                            v-model="carbon_reduction"
+                                            type="number"
+                                            class="form-control"
+                                            id="carbon_reduction"
+                                        />
+                                    </div>
                                 </div>
                                 <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label"
+                                            >Designer 1</label
+                                        >
+                                        <input
+                                            v-model="designer1"
+                                            type="text"
+                                            class="form-control"
+                                            id="designer1"
+                                        />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label"
+                                            >Designer 2</label
+                                        >
+                                        <input
+                                            v-model="designer2"
+                                            type="text"
+                                            class="form-control"
+                                            id="designer2"
+                                        />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label"
+                                            >Designer 2</label
+                                        >
+                                        <input
+                                            v-model="designer2"
+                                            type="text"
+                                            class="form-control"
+                                            id="designer2"
+                                        />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label"
+                                            >Designer 3</label
+                                        >
+                                        <input
+                                            v-model="designer3"
+                                            type="text"
+                                            class="form-control"
+                                            id="designer3"
+                                        />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label"
+                                            >Designer 4</label
+                                        >
+                                        <input
+                                            v-model="designer4"
+                                            type="text"
+                                            class="form-control"
+                                            id="designer4"
+                                        />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label"
+                                            >Designer 5</label
+                                        >
+                                        <input
+                                            v-model="designer5"
+                                            type="text"
+                                            class="form-control"
+                                            id="designer5"
+                                        />
+                                    </div>
                                     <div class="mb-3">
                                         <label class="form-label">
                                             Picture 1
@@ -207,6 +329,16 @@ const logo_client = ref("");
 const project_name = ref("");
 const main_pic = ref("");
 const article = ref("");
+const location = ref("");
+const year = ref("");
+const energy_savings = ref("");
+const water_savings = ref("");
+const carbon_reduction = ref("");
+const designer1 = ref("");
+const designer2 = ref("");
+const designer3 = ref("");
+const designer4 = ref("");
+const designer5 = ref("");
 const pic1 = ref("");
 const pic2 = ref("");
 const pic3 = ref("");
@@ -214,7 +346,9 @@ const pic4 = ref("");
 const pic5 = ref("");
 const pic6 = ref("");
 
-const urladdproject = "/addclient";
+const baseURL = axios.defaults.baseURL;
+
+const urladdproject = baseURL + "/api/addclient";
 
 const clearInput = () => {
     type_project.value = "";
@@ -223,6 +357,16 @@ const clearInput = () => {
     project_name.value = "";
     main_pic.value = "";
     article.value = "";
+    location.value = "";
+    year.value = "";
+    water_savings.value = "";
+    energy_savings.value = "";
+    carbon_reduction.value = "";
+    designer1.value = "";
+    designer2.value = "";
+    designer3.value = "";
+    designer4.value = "";
+    designer5.value = "";
     pic1.value = "";
     pic2.value = "";
     pic3.value = "";
@@ -244,6 +388,16 @@ const addproject = async () => {
             project_name: project_name.value,
             main_pic: main_pic.value.files[0],
             article: article.value,
+            location: location.value,
+            year: year.value,
+            energy_savings: energy_savings.value,
+            water_savings: water_savings.value,
+            carbon_reduction: carbon_reduction.value,
+            designer1: designer1.value,
+            designer2: designer2.value,
+            designer3: designer3.value,
+            designer4: designer4.value,
+            designer5: designer5.value,
             pic1: pic1.value.files[0],
             pic2: pic2.value.files[0],
             pic3: pic3.value.files[0],

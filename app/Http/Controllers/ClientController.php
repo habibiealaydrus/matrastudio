@@ -77,6 +77,8 @@ class ClientController extends Controller
             'project_name' => 'required',
             'main_pic' => 'required',
             'article' => 'required',
+            'location' => 'required',
+            'year' => 'required',
             'pic1' => 'required|mimes:jpeg,jpg,png,gif',
             'pic2' => 'required|mimes:jpeg,jpg,png,gif'
         ];
@@ -99,6 +101,35 @@ class ClientController extends Controller
         };
         $newclient->main_pic = $filename1 . '.' . $extension;
         $newclient->article = $request->article;
+        $newclient->location = $request->location;
+        $newclient->year = $request->year;
+        $newclient->energy_savings = $request->energy_savings;
+        $newclient->water_savings = $request->water_savings;
+        $newclient->carbon_reduction = $request->carbon_reduction;
+        if ($request->designer1) {
+            $newclient->designer1 = $request->designer1;
+        };
+        if ($request->designer2) {
+            $newclient->designer2 = $request->designer2;
+        };
+        if ($request->designer3) {
+            $newclient->designer3 = $request->designer3;
+        };
+        if ($request->designer4) {
+            $newclient->designer4 = $request->designer4;
+        };
+        if ($request->designer5) {
+            $newclient->designer5 = $request->designer5;
+        };
+        if ($request->energy_savings) {
+            $newclient->energy_savings = $request->energy_savings;
+        };
+        if ($request->water_savings) {
+            $newclient->water_savings = $request->water_savings;
+        };
+        if ($request->carbon_reduction) {
+            $newclient->carbon_reduction = $request->carbon_reduction;
+        };
         if ($request->logo_client) {
             $filename2 = $request->project_name . "logo";
             $extension = $request->logo_client->extension();

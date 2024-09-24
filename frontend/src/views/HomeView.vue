@@ -7,7 +7,7 @@ import Footer from "../components/Footer.vue";
 </script>
 
 <template>
-    <div class="bg-dark">
+    <div>
         <Slide />
         <Feature />
         <Approach />
