@@ -1,14 +1,14 @@
 <template>
-    <Carousel
-        :autoplay="2000"
-        :wrap-around="true"
-        class="bg-white mx-0 px-0 py-0"
-    >
-        <slide v-for="project in projects" :key="project.id">
+    <Carousel :autoplay="2000" :wrap-around="true">
+        <slide
+            v-for="project in projects"
+            :key="project.id"
+            class="bg-success px-0"
+        >
             <img
-                class="p-2"
+                class="px-0"
                 style="width: 100%; height: 100%"
-                :src="`${baseURL}/storage/projectpicture/${project.main_pic}`"
+                :src="`https://mantra.matrastudio.com/storage/app/public/projectpicture/${project.main_pic}`"
                 alt=""
             />
         </slide>
@@ -44,7 +44,7 @@ const urlproject = axios.defaults.baseURL + "/api/client";
 const getproject = async () => {
     try {
         const response = await axios.get(urlproject);
-        console.log(urlproject);
+
         projects.value = response.data.data;
     } catch (error) {}
 };

@@ -37,7 +37,7 @@
                 >
                     <img
                         class="p-2 w-100 h-100"
-                        :src="`${baseURL}/storage/projectpicture/${project.main_pic}`"
+                        :src="`https://mantra.matrastudio.com/storage/app/public/projectpicture/${project.main_pic}`"
                         alt=""
                     />
                     <div class="overlay">

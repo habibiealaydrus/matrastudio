@@ -46,7 +46,7 @@ const urlnews = "http://192.168.101.44:5000/api/newsall";
 const getnews = async () => {
     try {
         const response = await axios.get(urlnews);
-        console.log(news.data);
+
         news.value = response.data.data;
     } catch (error) {}
 };

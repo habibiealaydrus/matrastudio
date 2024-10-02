@@ -614,7 +614,7 @@ const getproject = async () => {
 const deleteproject = async (e) => {
     const id = e;
 
-    const urldeletenews = baseURL + "/api/deletenews/" + id;
+    const urldeletenews = baseURL + "/api/clientdelete/" + id;
 
     const response = await axios.delete(urldeletenews);
     alert("Project deleted");

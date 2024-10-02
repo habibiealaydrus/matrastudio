@@ -60,7 +60,7 @@
         <p>Rizky Kay Siregar & Yasser Hafidz</p>
         <div class="pb-5">
             <h5 class="h5 fst-italic pb-5">PEOPLE WE’VE WORKED WITH</h5>
-            <div class="d-flex justify-content-center gap-5">
+            <div class="d-flex justify-content-start gap-5 flex-wrap container">
                 <div
                     class="logoclient d-flex align-items-center"
                     v-for="logo in logoclients"
@@ -68,7 +68,7 @@
                     <img
                         alt=""
                         class="img-fluid"
-                        :src="`http://192.168.101.44:5000/storage/projectclients/${logo.projectclient_img}`"
+                        :src="`https://mantra.matrastudio.com/storage/app/public/projectclients/${logo.projectclient_img}`"
                     />
                 </div>
             </div>

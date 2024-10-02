@@ -35,7 +35,11 @@
                             <th scope="row">{{ index + 1 }}</th>
                             <td>{{ client.projectclient_name }}</td>
                             <td class="text-center">
-                                <img alt="" class="w-50" />
+                                <img
+                                    alt=""
+                                    class="w-50"
+                                    :src="`https://mantra.matrastudio.com/storage/app/public/projectclients/${client.projectclient_img}`"
+                                />
                             </td>
                             <td
                                 class="d-flex flex-column gap-3 align-items-center h-100"
