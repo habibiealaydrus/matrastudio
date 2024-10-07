@@ -21,49 +21,51 @@
             </div>
             <FormAddUser />
             <div class="collapse" id="collapsuser">
-                <table class="table border table-bordered rounded-3">
-                    <thead>
-                        <tr>
-                            <th scope="col">No</th>
-                            <th scope="col">Name user</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="(user, index) in users">
-                            <th scope="row">{{ index + 1 }}</th>
-                            <td class="text-nowrap">
-                                {{ user.name }}
-                            </td>
-                            <td class="text-nowrap">
-                                {{ user.email }}
-                            </td>
-                            <td
-                                class="d-flex flex-row gap-3 align-items-center text-center"
-                            >
-                                <button
-                                    class="btn btn-primary"
-                                    @click="previewuser(user.id)"
-                                    type="button"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#userPreviewModal"
+                <div class="table-responsive">
+                    <table class="table border table-bordered rounded-3">
+                        <thead>
+                            <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">Name user</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="(user, index) in users">
+                                <th scope="row">{{ index + 1 }}</th>
+                                <td class="text-nowrap">
+                                    {{ user.name }}
+                                </td>
+                                <td class="text-nowrap">
+                                    {{ user.email }}
+                                </td>
+                                <td
+                                    class="d-flex flex-row gap-3 align-items-center text-center"
                                 >
-                                    Detail
-                                </button>
-                                <button class="btn btn-warning" disabled>
-                                    Edit
-                                </button>
-                                <button
-                                    class="btn btn-danger"
-                                    @click="deleteuser(user.id)"
-                                >
-                                    Delete
-                                </button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                                    <button
+                                        class="btn btn-primary"
+                                        @click="previewuser(user.id)"
+                                        type="button"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#userPreviewModal"
+                                    >
+                                        Detail
+                                    </button>
+                                    <button class="btn btn-warning" disabled>
+                                        Edit
+                                    </button>
+                                    <button
+                                        class="btn btn-danger"
+                                        @click="deleteuser(user.id)"
+                                    >
+                                        Delete
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
         <!-- Preview User modal  -->

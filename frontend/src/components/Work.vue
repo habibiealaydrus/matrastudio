@@ -7,7 +7,7 @@
             >
                 Projects
             </p>
-            <div class="d-flex flex-row my-0 py-0 ms-1">
+            <div class="d-flex flex-row flex-wrap my-0 py-0 ms-1">
                 <div
                     @click="filter('Architecture')"
                     class="text-uppercase fs-3 me-5"
@@ -36,8 +36,11 @@
                     :key="project"
                 >
                     <img
-                        class="p-2 w-100 h-100"
-                        :src="`https://mantra.matrastudio.com/storage/app/public/projectpicture/${project.main_pic}`"
+                        class="p-2 w-100"
+                        :src="
+                            baseURL +
+                            `/storage/projectpicture/${project.grid_pic}`
+                        "
                         alt=""
                     />
                     <div class="overlay">

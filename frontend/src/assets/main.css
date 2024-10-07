@@ -124,7 +124,7 @@ body {
     color: #ffff;
 }
 .logoclient {
-    width: 100px;
+    width: 20dvh;
     display: table;
     border: 1px;
 }

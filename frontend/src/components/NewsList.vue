@@ -21,50 +21,52 @@
             </div>
             <FormAddNews />
             <div class="collapse table-responsive" id="collapsenews">
-                <table class="table border table-bordered rounded-3">
-                    <thead>
-                        <tr>
-                            <th scope="col">No</th>
-                            <th scope="col">Headline</th>
-                            <th scope="col">Pic</th>
-                            <th scope="col">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="(itemsnews, index) in news">
-                            <th scope="row">{{ index + 1 }}</th>
-                            <td>{{ itemsnews.headline_news }}</td>
-                            <td>
-                                <img
-                                    :src="`http://127.0.0.1:8000/storage/news/${itemsnews.main_pic}`"
-                                    alt=""
-                                    class="img-fluid"
-                                />
-                            </td>
-                            <td
-                                class="d-flex flex-column gap-3 align-items-center"
-                            >
-                                <button
-                                    class="btn btn-primary"
-                                    @click="getIdNews(itemsnews.id)"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#newsDetailModal"
+                <div class="table-responsive">
+                    <table class="table border table-bordered rounded-3">
+                        <thead>
+                            <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">Headline</th>
+                                <th scope="col">Pic</th>
+                                <th scope="col">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="(itemsnews, index) in news">
+                                <th scope="row">{{ index + 1 }}</th>
+                                <td>{{ itemsnews.headline_news }}</td>
+                                <td>
+                                    <img
+                                        :src="`http://127.0.0.1:8000/storage/news/${itemsnews.main_pic}`"
+                                        alt=""
+                                        class="img-fluid"
+                                    />
+                                </td>
+                                <td
+                                    class="d-flex flex-column gap-3 align-items-center"
                                 >
-                                    Preview
-                                </button>
-                                <button class="btn btn-warning" disabled>
-                                    Edit
-                                </button>
-                                <button
-                                    class="btn btn-danger"
-                                    @click="deleteNews(itemsnews.id)"
-                                >
-                                    Delete
-                                </button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                                    <button
+                                        class="btn btn-primary"
+                                        @click="getIdNews(itemsnews.id)"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#newsDetailModal"
+                                    >
+                                        Preview
+                                    </button>
+                                    <button class="btn btn-warning" disabled>
+                                        Edit
+                                    </button>
+                                    <button
+                                        class="btn btn-danger"
+                                        @click="deleteNews(itemsnews.id)"
+                                    >
+                                        Delete
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
                 <!-- Detail News Modal Stat -->
                 <div
                     class="modal fade modal-xl"

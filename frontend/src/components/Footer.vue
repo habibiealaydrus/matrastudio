@@ -14,47 +14,16 @@
                         class="img-fluid"
                     />
                 </div>
-                <div class="col-4 text-white text-start">
+                <div class="col-4 text-white text-start fs-5">
                     Jakarta Creative Hub-Grha Niaga Thamrin, Lantai 1 <br />
-                    Jl.Kb.Melati 5 No.202, RT.2/RW.8, Kb.Melati Tanah Abang
+                    Jl.Kb.Melati 5 No.20 2, RT.2/RW.8, Kb.Melati
                     <br />
-                    Kota Jakarta Pusat, Jakarta-10230
+                    Tanah Abang, Kota Jakarta Pusat, Jakarta - 10230
                 </div>
-                <div class="col-4">
-                    <div class="row text-start text-white">
-                        <p class="m-0">email :info@matrastudio.com</p>
-                        <p>phone/wa :+62882-1239-9197</p>
-                    </div>
-                    <div class="row text-white">
-                        <span
-                            class="d-flex flex-row justify-content-start gap-2"
-                        >
-                            <a
-                                class="nav-link pt-0 fs-1"
-                                href="https://www.instagram.com/matra.studio/?hl=id"
-                            >
-                                <font-awesome-icon
-                                    :icon="['fab', 'instagram']"
-                                />
-                            </a>
-
-                            <a
-                                class="nav-link pt-0 fs-1"
-                                href="https://www.youtube.com/channel/UCqYHJSKMZlQLbZilgYwHTmQ"
-                            >
-                                <font-awesome-icon :icon="['fab', 'youtube']" />
-                            </a>
-
-                            <a
-                                class="nav-link pt-0 fs-1"
-                                href="https://www.facebook.com/matrastudio/"
-                            >
-                                <font-awesome-icon
-                                    :icon="['fab', 'facebook']"
-                                />
-                            </a>
-                        </span>
-                    </div>
+                <div class="col-4 text-white text-wrap fs-6 text-break">
+                    Email: info@matrastudio.com
+                    <br />
+                    Phone: +62 882-1239-9197
                 </div>
             </div>
         </div>

@@ -36,6 +36,7 @@
                                             type="text"
                                             class="form-control"
                                             id="projectclient_name"
+                                            required
                                         />
                                     </div>
                                     <div class="mb-3">
@@ -48,6 +49,7 @@
                                             id="formFile"
                                             ref="projectclient_img"
                                             accept=".jpg, .png, .jpeg, .gif"
+                                            required
                                         />
                                     </div>
                                 </div>

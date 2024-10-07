@@ -21,53 +21,56 @@
             </div>
             <FormAddEvent />
             <div class="collapse" id="collapsevent">
-                <table class="table border table-bordered rounded-3">
-                    <thead>
-                        <tr>
-                            <th scope="col">No</th>
-                            <th scope="col">Title event</th>
-                            <th scope="col">Picture</th>
-                            <th scope="col">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="(itemevent, index) in event">
-                            <th scope="row">{{ index + 1 }}</th>
-                            <td class="text-nowrap">
-                                {{ itemevent.title_event }}
-                            </td>
-                            <td class="text-center">
-                                <img
-                                    :src="`http://127.0.0.1:8000/storage/event/${itemevent.pic_event}`"
-                                    alt=""
-                                    class="w-50"
-                                />
-                            </td>
-                            <td
-                                class="d-flex flex-column gap-3 align-items-center"
-                            >
-                                <button
-                                    class="btn btn-primary"
-                                    @click="previewEvent(itemevent.id)"
-                                    type="button"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#eventPreviewModal"
+                <div class="table-responsive">
+                    <table class="table border table-bordered rounded-3">
+                        <thead>
+                            <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">Title event</th>
+                                <th scope="col">Picture</th>
+                                <th scope="col">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="(itemevent, index) in event">
+                                <th scope="row">{{ index + 1 }}</th>
+                                <td class="text-wrap">
+                                    {{ itemevent.title_event }}
+                                </td>
+                                <td class="text-center">
+                                    <img
+                                        :src="
+                                            baseURL +
+                                            `/storage/event/${itemevent.pic_event}`
+                                        "
+                                        alt=""
+                                        class="w-10075"
+                                    />
+                                </td>
+                                <td
+                                    class="d-flex flex-column gap-3 align-items-center"
                                 >
-                                    Detail
-                                </button>
-                                <button class="btn btn-warning" disabled>
-                                    Edit
-                                </button>
-                                <button
-                                    class="btn btn-danger"
-                                    @click="deleteEvent(itemevent.id)"
-                                >
-                                    Delete
-                                </button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                                    <button
+                                        class="btn btn-primary"
+                                        @click="previewEvent(itemevent.id)"
+                                        type="button"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#eventPreviewModal"
+                                    >
+                                        Detail
+                                    </button>
+
+                                    <button
+                                        class="btn btn-danger"
+                                        @click="deleteEvent(itemevent.id)"
+                                    >
+                                        Delete
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
         <!-- Preview Event modal  -->
@@ -143,7 +146,7 @@ const previewEvent = (e) => {
 const deleteEvent = async (e) => {
     const idDeleteEvent = e;
     const url = axios.defaults.baseURL;
-    const apideleteEvent = url + "/deleteevent/";
+    const apideleteEvent = url + "/api/deleteevent/";
     const urlDeleteEvent = apideleteEvent + idDeleteEvent;
 
     const response = await axios.delete(urlDeleteEvent);

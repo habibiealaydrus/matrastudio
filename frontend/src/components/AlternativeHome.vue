@@ -4,7 +4,7 @@
             <div
                 class="homebannertext rounded-2 col-7 fs-1 position-absolute bottom-0 start-0"
             >
-                <p>
+                <p class="pb-3">
                     "We are creating meaningfull spaces with a focus on
                     <span class="text-cycle text-start display-1 text-wrap">
                         {{ textCycle }}"
@@ -65,6 +65,8 @@ onMounted(() => {
 .bannerhome {
     background-image: url("../assets/img/homepage.jpg");
     background-repeat: no-repeat, repeat;
+    background-size: cover;
+    background-position: center;
     /* filter: grayscale(100%); */
     height: 90vh;
 }

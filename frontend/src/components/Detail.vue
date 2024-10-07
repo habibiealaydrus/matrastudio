@@ -1,7 +1,7 @@
 <template>
     <div class="bg-white">
         <img
-            :src="`https://mantra.matrastudio.com/storage/app/public/projectpicture/${detailproject.main_pic}`"
+            :src="baseURL + `/storage/projectpicture/${detailproject.main_pic}`"
             alt=""
             class="w-100 img-fluid"
         />
@@ -64,107 +64,154 @@
                     </table>
                 </div>
             </div>
-            <div class="row mb-3 bg-secondary-subtle p-2">
-                <table
-                    class="table"
-                    v-if="`${detailproject.energy_savings}` > 0"
-                >
-                    <tr>
-                        <td rowspan="2" class="text-center">
-                            <img
-                                src="../assets/img/lightning.png"
-                                style="
-                                    max-height: 100px;
-                                    background-color: transparent;
-                                "
-                                alt=""
-                            />
-                        </td>
-                        <td
-                            class="display-3 pb-0 counter"
-                            :style="`--from: 0; --to: ${Energy} ; --time: 4s`"
-                        ></td>
-                        <td rowspan="2" class="text-center">
-                            <img
-                                src="../assets/img/co2.png"
-                                style="
-                                    max-height: 100px;
-                                    background-color: transparent;
-                                "
-                                alt=""
-                            />
-                        </td>
-                        <td
-                            class="display-3 pb-0 counter"
-                            :style="`--from: 0; --to: ${Carbon} ; --time: 4s`"
-                        ></td>
-                    </tr>
-                    <tr>
-                        <td class="fs-2">Energy Savings (kWh/year)</td>
-                        <td class="fs-2">
-                            Carbon Reduction (tC0<sub
-                                style="background-color: transparent"
-                                >2</sub
-                            >e/year)
-                        </td>
-                    </tr>
-                    <tr>
-                        <td rowspan="2" class="text-center">
-                            <img
-                                src="../assets/img/water.png"
-                                style="
-                                    max-height: 100px;
-                                    background-color: transparent;
-                                "
-                                alt=""
-                            />
-                        </td>
-                        <td
-                            class="display-3 pb-0 counter"
-                            :style="`--from: 0; --to: ${Water} ; --time: 4s`"
-                        ></td>
-                        <td
-                            rowspan="2"
-                            class="text-center"
-                            v-if="`${detailproject.embodied_energy}` > 0"
-                        >
-                            <img
-                                src="../assets/img/Eett.png"
-                                style="
-                                    max-height: 100px;
-                                    background-color: transparent;
-                                "
-                                alt=""
-                            />
-                        </td>
-                        <td
-                            v-if="`${detailproject.embodied_energy}` > 0"
-                            class="display-3 pb-0 counter"
-                            :style="`--from: 0; --to: ${Embodied} ; --time: 4s`"
-                        ></td>
-                    </tr>
-                    <tr>
-                        <td class="fs-2">Water Savings (liters)</td>
-                        <td
-                            class="fs-2"
-                            v-if="`${detailproject.embodied_energy}` > 0"
-                        >
-                            Embodied Energy (GJ)
-                        </td>
-                    </tr>
-                </table>
+            <div class="row mb-3 bg-secondary-subtle py-3 px-2">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-2">
+                                <img
+                                    src="../assets/img/lightning.png"
+                                    style="
+                                        max-height: 100px;
+                                        background-color: transparent;
+                                    "
+                                    alt=""
+                                    class="img-fluid"
+                                />
+                            </div>
+                            <div class="col-10">
+                                <div class="row">
+                                    <div
+                                        class="col-12 display-3 pb-0 counter border-0"
+                                        :style="`
+                                            --from: 0;
+                                            --to: ${Energy};
+                                            --time: 4s;
+                                        `"
+                                    ></div>
+                                    <div class="col-12 text-nowrap">
+                                        Energy Savings (kWh/year)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-4 text-center">
+                                <img
+                                    src="../assets/img/co2.png"
+                                    style="
+                                        max-height: 100px;
+                                        background-color: transparent;
+                                    "
+                                    alt=""
+                                    class="img-fluid"
+                                />
+                            </div>
+                            <div class="col-8">
+                                <div class="row">
+                                    <div
+                                        class="col-12 display-3 pb-0 counter border-0"
+                                        :style="`
+                                            --from: 0;
+                                            --to: ${Carbon};
+                                            --time: 4s;
+                                        `"
+                                    ></div>
+                                    <div class="col-12 text-nowrap">
+                                        Carbon Reduction (tC0<sub
+                                            style="
+                                                background-color: transparent;
+                                            "
+                                            >2</sub
+                                        >e/year)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-2">
+                                <img
+                                    src="../assets/img/water.png"
+                                    style="
+                                        max-height: 100px;
+                                        background-color: transparent;
+                                    "
+                                    alt=""
+                                    class="img-fluid"
+                                />
+                            </div>
+                            <div class="col-10">
+                                <div class="row">
+                                    <div
+                                        class="col-12 display-3 pb-0 counter border-0"
+                                        :style="`
+                                            --from: 0;
+                                            --to: ${Water};
+                                            --time: 4s;
+                                        `"
+                                    ></div>
+                                    <div class="col-12 text-nowrap">
+                                        Water Savings (liters)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-4 text-center">
+                                <img
+                                    src="../assets/img/Eett.png"
+                                    style="
+                                        max-height: 100px;
+                                        background-color: transparent;
+                                    "
+                                    alt=""
+                                    class="img-fluid"
+                                />
+                            </div>
+                            <div class="col-8">
+                                <div class="row">
+                                    <div
+                                        class="col-12 display-3 pb-0 counter border-0"
+                                        :style="`
+                                            --from: 0;
+                                            --to: ${Embodied};
+                                            --time: 4s;
+                                        `"
+                                    ></div>
+                                    <div class="col-12 text-nowrap">
+                                        Embodied Energy (GJ)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="row pb-5">
                 <div class="col-6">
                     <img
-                        :src="`https://mantra.matrastudio.com/storage/app/public/projectpicture/${detailproject.pic1}`"
+                        :src="
+                            baseURL +
+                            `/storage/projectpicture/${detailproject.pic1}`
+                        "
                         alt=""
                         class="w-100 img-fluid"
                     />
                 </div>
                 <div class="col-6">
                     <img
-                        :src="`https://mantra.matrastudio.com/storage/app/public/projectpicture/${detailproject.pic2}`"
+                        :src="
+                            baseURL +
+                            `/storage/projectpicture/${detailproject.pic2}`
+                        "
                         class="w-100 img-fluid"
                         alt=""
                     />
@@ -173,7 +220,10 @@
             <div class="row pb-5">
                 <div class="col-12">
                     <img
-                        :src="`https://mantra.matrastudio.com/storage/app/public/projectpicture/${detailproject.pic3}`"
+                        :src="
+                            baseURL +
+                            `/storage/projectpicture/${detailproject.pic3}`
+                        "
                         alt=""
                         class="w-100 img-fluid"
                     />
@@ -182,14 +232,20 @@
             <div class="row pb-5">
                 <div class="col-6">
                     <img
-                        :src="`https://mantra.matrastudio.com/storage/app/public/projectpicture/${detailproject.pic4}`"
+                        :src="
+                            baseURL +
+                            `/storage/projectpicture/${detailproject.pic4}`
+                        "
                         class="w-100 img-fluid"
                         alt=""
                     />
                 </div>
                 <div class="col-6">
                     <img
-                        :src="`https://mantra.matrastudio.com/storage/app/public/projectpicture/${detailproject.pic5}`"
+                        :src="
+                            baseURL +
+                            `/storage/projectpicture/${detailproject.pic5}`
+                        "
                         class="w-100 img-fluid"
                         alt=""
                     />
@@ -198,7 +254,10 @@
             <div class="row pb-5">
                 <div class="col-6">
                     <img
-                        :src="`https://mantra.matrastudio.com/storage/app/public/projectpicture/${detailproject.pic6}`"
+                        :src="
+                            baseURL +
+                            `/storage/projectpicture/${detailproject.pic6}`
+                        "
                         class="w-100 img-fluid"
                         alt=""
                     />
@@ -225,6 +284,7 @@ const team = ref([]);
 const Energy = ref([]);
 const Carbon = ref([]);
 const Water = ref([]);
+const Embodied = ref([]);
 
 const baseURL = axios.defaults.baseURL;
 const urldetail = baseURL + "/api/clientdetail/" + id;
@@ -236,6 +296,7 @@ const getdetailproject = async () => {
         Energy.value = parseInt(response.data.data.energy_savings);
         Carbon.value = parseInt(response.data.data.carbon_reduction);
         Water.value = parseInt(response.data.data.water_savings);
+        Embodied.value = parseInt(response.data.data.embodied_energy);
         designTeam.value = response.data.data.designer1;
         if (designTeam.value) {
             team.value = true;

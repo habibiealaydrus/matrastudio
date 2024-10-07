@@ -50,7 +50,7 @@
     <div class="container-fluid" style="padding: 5% 10% 5% 10%">
         <!-- atas/kanan/bawah/kiri -->
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-sm-6">
                 <div class="row">
                     <div class="col-2">
                         <img
@@ -60,6 +60,7 @@
                                 background-color: transparent;
                             "
                             alt=""
+                            class="img-fluid"
                         />
                     </div>
                     <div class="col-10">
@@ -75,7 +76,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-sm-6">
                 <div class="row">
                     <div class="col-4 text-center">
                         <img
@@ -85,6 +86,7 @@
                                 background-color: transparent;
                             "
                             alt=""
+                            class="img-fluid"
                         />
                     </div>
                     <div class="col-8">
@@ -115,6 +117,7 @@
                                 background-color: transparent;
                             "
                             alt=""
+                            class="img-fluid"
                         />
                     </div>
                     <div class="col-10">
@@ -140,6 +143,7 @@
                                 background-color: transparent;
                             "
                             alt=""
+                            class="img-fluid"
                         />
                     </div>
                     <div class="col-8">

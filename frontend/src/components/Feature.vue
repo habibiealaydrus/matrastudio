@@ -10,7 +10,10 @@
                         <img
                             class="p-2"
                             style="width: 30vw; height: 20vw"
-                            :src="`https://mantra.matrastudio.com/storage/app/public/projectpicture/${project.main_pic}`"
+                            :src="
+                                baseURL +
+                                `/storage/projectpicture/${project.main_pic}`
+                            "
                             alt=""
                         />
                     </a>

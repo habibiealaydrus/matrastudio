@@ -1,7 +1,7 @@
 <template>
     <div>
         <img
-            :src="`http://192.168.101.44:5000/storage/blog/${blog.main_img}`"
+            :src="baseURL + `/storage/blog/${blog.main_img}`"
             alt=""
             class="w-100 img-fluid"
             style="height: 100dvh"
@@ -31,9 +31,9 @@ import axios from "axios";
 import { ref, onMounted } from "vue";
 
 const blog = ref([]);
-
+const baseURL = axios.defaults.baseURL;
 const id = window.location.pathname.substring(13);
-const urldetail = "http://192.168.101.44:5000/api/detailblog/" + id;
+const urldetail = baseURL + "/api/detailblog/" + id;
 
 const getdetailblog = async () => {
     const response = await axios.get(urldetail);

@@ -5,7 +5,7 @@ import App from "./App.vue";
 import router from "./router";
 import axios from "axios";
 
-axios.defaults.baseURL = "http://192.168.21.10:5000";
+axios.defaults.baseURL = "https://mantra.matrastudio.com/public";
 
 /* import the fontawesome core */
 import { library } from "@fortawesome/fontawesome-svg-core";

@@ -21,49 +21,53 @@
             </div>
             <FormAddProjectclient />
             <div class="collapse" id="collapsclient">
-                <table class="table border table-bordered rounded-3">
-                    <thead>
-                        <tr>
-                            <th scope="col">No</th>
-                            <th scope="col">Title</th>
-                            <th scope="col">Picture</th>
-                            <th scope="col">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="(client, index) in clients">
-                            <th scope="row">{{ index + 1 }}</th>
-                            <td>{{ client.projectclient_name }}</td>
-                            <td class="text-center">
-                                <img
-                                    alt=""
-                                    class="w-50"
-                                    :src="`https://mantra.matrastudio.com/storage/app/public/projectclients/${client.projectclient_img}`"
-                                />
-                            </td>
-                            <td
-                                class="d-flex flex-column gap-3 align-items-center h-100"
-                            >
-                                <button
-                                    class="btn btn-primary"
-                                    @click="previewimageclient(client.id)"
-                                    type="button"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#clientPreviewModal"
+                <div class="table-responsive">
+                    <table class="table border table-bordered rounded-3">
+                        <thead>
+                            <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">Title</th>
+                                <th scope="col">Picture</th>
+                                <th scope="col">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="(client, index) in clients">
+                                <th scope="row">{{ index + 1 }}</th>
+                                <td>{{ client.projectclient_name }}</td>
+                                <td class="text-center">
+                                    <img
+                                        alt=""
+                                        class="w-50"
+                                        :src="`https://mantra.matrastudio.com/storage/app/public/projectclients/${client.projectclient_img}`"
+                                    />
+                                </td>
+                                <td
+                                    class="d-flex flex-column gap-3 align-items-center h-100"
                                 >
-                                    Preview
-                                </button>
-                                <button class="btn btn-warning">Edit</button>
-                                <button
-                                    class="btn btn-danger"
-                                    @click="deleteclient(client.id)"
-                                >
-                                    Delete
-                                </button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                                    <button
+                                        class="btn btn-primary"
+                                        @click="previewimageclient(client.id)"
+                                        type="button"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#clientPreviewModal"
+                                    >
+                                        Preview
+                                    </button>
+                                    <button class="btn btn-warning">
+                                        Edit
+                                    </button>
+                                    <button
+                                        class="btn btn-danger"
+                                        @click="deleteclient(client.id)"
+                                    >
+                                        Delete
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
         <!-- Preview blog modal  -->

@@ -1,18 +1,17 @@
 <template>
     <div>
         <img
-            :src="`http://192.168.101.44:5000/storage/event/${event.pic_event}`"
+            :src="baseURL + `/storage/event/${event.pic_event}`"
             alt=""
             class="w-100 img-fluid"
-            style="height: 100dvh"
         />
         <div class="container-fluid p-5 bg-dark text-white text-left">
             <div class="row justify-content-center">
-                <div class="col-6 fs-5">
+                <div class="col-8 fs-5">
                     <h3 class="h3 text-left">Event</h3>
                     <p class="display-5 fw-medium">{{ event.title_event }}</p>
                     <h3 class="h3 text-left"></h3>
-                    <p class="pt-5">
+                    <p class="pt-5" style="text-align: justify">
                         {{ event.article_event }}
                     </p>
                     <p class="fs-1">
@@ -54,7 +53,8 @@ const end = ref([]);
 const date = ref([]);
 
 const id = window.location.pathname.substring(13);
-const urldetail = "http://192.168.101.44:5000/api/detilevent" + id;
+const baseURL = axios.defaults.baseURL;
+const urldetail = baseURL + "/api/detilevent" + id;
 
 const getdetailevent = async () => {
     const response = await axios.get(urldetail);

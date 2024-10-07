@@ -26,21 +26,22 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label"
-                                            >Tipe Project
-                                        </label>
+                                            >Tipe Project </label
+                                        ><span class="required">*required</span>
                                         <select
                                             class="form-control"
                                             v-model="type_project"
                                             name="type_project"
                                             id="type_project"
+                                            required
                                         >
-                                            <option value="Arsitektur">
+                                            <option value="Architecture">
                                                 Architecture
                                             </option>
-                                            <option value="Green building">
+                                            <option value="Sustainability">
                                                 Sustainability
                                             </option>
-                                            <option value="Green building">
+                                            <option value="Instalation">
                                                 Instalation
                                             </option>
                                         </select>
@@ -48,47 +49,65 @@
                                     <div class="mb-3">
                                         <label class="form-label"
                                             >Nama Client</label
-                                        >
+                                        ><span class="required">*required</span>
                                         <input
                                             v-model="name_client"
                                             type="text"
                                             class="form-control"
                                             id="name_client"
+                                            required
                                         />
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">
-                                            Logo Client
-                                        </label>
+                                            Logo Client </label
+                                        ><span class="required">*required</span>
                                         <input
                                             ref="logo_client"
                                             accept=".jpg, .png, .jpeg, .gif"
                                             class="form-control"
                                             type="file"
                                             id="formFile"
+                                            required
                                         />
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label"
                                             >Nama Project</label
-                                        >
+                                        ><span class="required">*required</span>
                                         <input
                                             v-model="project_name"
                                             type="text"
                                             class="form-control"
                                             id="project_name"
+                                            required
                                         />
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">
-                                            Main Picture
-                                        </label>
+                                            Main Picture </label
+                                        ><span class="required">*required</span>
                                         <input
                                             class="form-control"
                                             type="file"
                                             id="formFile"
                                             ref="main_pic"
                                             accept=".jpg, .png, .jpeg, .gif"
+                                            required
+                                        />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">
+                                            Grid Picture
+                                        </label>
+                                        <span class="required">*required</span>
+                                        <input
+                                            class="form-control"
+                                            type="file"
+                                            id="formFile"
+                                            ref="grid_pic"
+                                            accept=".jpg, .png, .jpeg, .gif"
+                                            required
                                         />
                                     </div>
                                     <div class="mb-3">
@@ -96,38 +115,43 @@
                                             for="exampleFormControlTextarea1"
                                             class="form-label"
                                             >Project Article</label
-                                        >
+                                        ><span class="required">*required</span>
                                         <textarea
                                             class="form-control"
                                             id="article"
                                             rows="3"
                                             v-model="article"
+                                            required
                                         ></textarea>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label"
                                             >Location</label
-                                        >
+                                        ><span class="required">*required</span>
                                         <input
                                             v-model="location"
                                             type="text"
                                             class="form-control"
                                             id="location"
+                                            required
                                         />
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Year</label>
+                                        <span class="required">*required</span>
                                         <input
                                             v-model="year"
                                             type="text"
                                             class="form-control"
                                             id="year"
+                                            required
                                         />
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label"
                                             >Energy Savings</label
                                         >
+
                                         <input
                                             v-model="energy_savings"
                                             type="number"
@@ -157,6 +181,17 @@
                                             id="carbon_reduction"
                                         />
                                     </div>
+                                    <div class="mb-3">
+                                        <label class="form-label"
+                                            >Embodied Energy</label
+                                        >
+                                        <input
+                                            v-model="embodied_energy"
+                                            type="number"
+                                            class="form-control"
+                                            id="embodied_energy"
+                                        />
+                                    </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
@@ -168,17 +203,6 @@
                                             type="text"
                                             class="form-control"
                                             id="designer1"
-                                        />
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label"
-                                            >Designer 2</label
-                                        >
-                                        <input
-                                            v-model="designer2"
-                                            type="text"
-                                            class="form-control"
-                                            id="designer2"
                                         />
                                     </div>
                                     <div class="mb-3">
@@ -226,9 +250,20 @@
                                         />
                                     </div>
                                     <div class="mb-3">
+                                        <label class="form-label"
+                                            >Designer 6</label
+                                        >
+                                        <input
+                                            v-model="designer6"
+                                            type="text"
+                                            class="form-control"
+                                            id="designer6"
+                                        />
+                                    </div>
+                                    <div class="mb-3">
                                         <label class="form-label">
-                                            Picture 1
-                                        </label>
+                                            Picture 1 </label
+                                        ><span class="required">*required</span>
                                         <input
                                             class="form-control"
                                             type="file"
@@ -239,20 +274,21 @@
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">
-                                            Picture 2
-                                        </label>
+                                            Picture 2 </label
+                                        ><span class="required">*required</span>
                                         <input
                                             class="form-control"
                                             type="file"
                                             id="pic2"
+                                            C
                                             ref="pic2"
                                             accept=".jpg, .png, .jpeg, .gif"
                                         />
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">
-                                            Picture 3
-                                        </label>
+                                            Picture 3 </label
+                                        ><span class="required">*landcape</span>
                                         <input
                                             class="form-control"
                                             type="file"
@@ -287,12 +323,12 @@
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">
-                                            Picture 5
+                                            Picture 6
                                         </label>
                                         <input
                                             class="form-control"
                                             type="file"
-                                            id="pic5"
+                                            id="pic6"
                                             ref="pic6"
                                             accept=".jpg, .png, .jpeg, .gif"
                                         />
@@ -328,17 +364,20 @@ const name_client = ref("");
 const logo_client = ref("");
 const project_name = ref("");
 const main_pic = ref("");
+const grid_pic = ref("");
 const article = ref("");
 const location = ref("");
 const year = ref("");
 const energy_savings = ref("");
 const water_savings = ref("");
 const carbon_reduction = ref("");
+const embodied_energy = ref("");
 const designer1 = ref("");
 const designer2 = ref("");
 const designer3 = ref("");
 const designer4 = ref("");
 const designer5 = ref("");
+const designer6 = ref("");
 const pic1 = ref("");
 const pic2 = ref("");
 const pic3 = ref("");
@@ -356,12 +395,14 @@ const clearInput = () => {
     logo_client.value = "";
     project_name.value = "";
     main_pic.value = "";
+    grid_pic.value = "";
     article.value = "";
     location.value = "";
     year.value = "";
     water_savings.value = "";
     energy_savings.value = "";
     carbon_reduction.value = "";
+    embodied_energy.value = "";
     designer1.value = "";
     designer2.value = "";
     designer3.value = "";
@@ -387,12 +428,14 @@ const addproject = async () => {
             logo_client: logo_client.value.files[0],
             project_name: project_name.value,
             main_pic: main_pic.value.files[0],
+            grid_pic: grid_pic.value.files[0],
             article: article.value,
             location: location.value,
             year: year.value,
             energy_savings: energy_savings.value,
             water_savings: water_savings.value,
             carbon_reduction: carbon_reduction.value,
+            embodied_energy: embodied_energy.value,
             designer1: designer1.value,
             designer2: designer2.value,
             designer3: designer3.value,

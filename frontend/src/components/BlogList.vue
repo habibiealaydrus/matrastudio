@@ -21,49 +21,53 @@
             </div>
             <FormAddBlog />
             <div class="collapse" id="collapsblog">
-                <table class="table border table-bordered rounded-3">
-                    <thead>
-                        <tr>
-                            <th scope="col">No</th>
-                            <th scope="col">Title</th>
-                            <th scope="col">Picture</th>
-                            <th scope="col">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="(blog, index) in blogs">
-                            <th scope="row">{{ index + 1 }}</th>
-                            <td>{{ blog.title_blog }}</td>
-                            <td class="text-center">
-                                <img
-                                    :src="`${baseURL}/storage/blog/${blog.main_img}`"
-                                    alt=""
-                                    class="w-50"
-                                />
-                            </td>
-                            <td
-                                class="d-flex flex-column gap-3 align-items-center h-100"
-                            >
-                                <button
-                                    class="btn btn-primary"
-                                    @click="previewblog(blog.id)"
-                                    type="button"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#BlogPreviewModal"
+                <div class="table-responsive">
+                    <table class="table border table-bordered rounded-3">
+                        <thead>
+                            <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">Title</th>
+                                <th scope="col">Picture</th>
+                                <th scope="col">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="(blog, index) in blogs">
+                                <th scope="row">{{ index + 1 }}</th>
+                                <td>{{ blog.title_blog }}</td>
+                                <td class="text-center">
+                                    <img
+                                        :src="`${baseURL}/storage/blog/${blog.main_img}`"
+                                        alt=""
+                                        class="w-50"
+                                    />
+                                </td>
+                                <td
+                                    class="d-flex flex-column gap-3 align-items-center h-100"
                                 >
-                                    Preview
-                                </button>
-                                <button class="btn btn-warning">Edit</button>
-                                <button
-                                    class="btn btn-danger"
-                                    @click="deleteBlog(blog.id)"
-                                >
-                                    Delete
-                                </button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                                    <button
+                                        class="btn btn-primary"
+                                        @click="previewblog(blog.id)"
+                                        type="button"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#BlogPreviewModal"
+                                    >
+                                        Preview
+                                    </button>
+                                    <button class="btn btn-warning">
+                                        Edit
+                                    </button>
+                                    <button
+                                        class="btn btn-danger"
+                                        @click="deleteBlog(blog.id)"
+                                    >
+                                        Delete
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
         <!-- Preview blog modal  -->

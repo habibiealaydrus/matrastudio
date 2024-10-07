@@ -8,7 +8,7 @@
                     style="color: black"
                 >
                     <img
-                        :src="`http://192.168.101.44:5000/storage/blog/${blog.main_img}`"
+                        :src="baseURL + `/storage/blog/${blog.main_img}`"
                         alt=""
                         class="w-100"
                     />
