@@ -17,10 +17,11 @@
                             alt=""
                         />
                     </a>
-                    <h3 class="text-start px-1">{{ project.project_name }}</h3>
-                    <p class="text-start px-1">
-                        {{ project.article.substring(0, 100) }}...
-                    </p>
+                    <h3 class="text-center px-1">{{ project.project_name }}</h3>
+                    <!-- <div
+                        class="text-start"
+                        v-html="project.article.substring(0, 120)"
+                    ></div> -->
                 </div>
             </div>
         </div>

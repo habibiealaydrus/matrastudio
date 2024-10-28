@@ -5,15 +5,13 @@
             alt=""
             class="w-100 img-fluid"
         />
-        <div class="container-fluid p-5 bg-dark text-white text-left">
+        <div class="container-fluid p-5 bg-secondary text-white text-left">
             <div class="row justify-content-center">
                 <div class="col-8 fs-5">
                     <h3 class="h3 text-left">Event</h3>
                     <p class="display-5 fw-medium">{{ event.title_event }}</p>
                     <h3 class="h3 text-left"></h3>
-                    <p class="pt-5" style="text-align: justify">
-                        {{ event.article_event }}
-                    </p>
+                    <div class="pt-5" v-html="event.article_event"></div>
                     <p class="fs-1">
                         Location: <strong>{{ event.location_event }}</strong>
                     </p>

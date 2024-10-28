@@ -1,7 +1,9 @@
 <template>
     <div>
-        <div class="card bg-success-subtle" style="width: 100%">
-            <div class="card-header d-flex justify-content-between flex-wrap">
+        <div class="card" style="width: 100%">
+            <div
+                class="card-header bg-success-subtle d-flex justify-content-between flex-wrap"
+            >
                 <div
                     class="text-white fs-3 text-start"
                     type="button"
@@ -44,7 +46,7 @@
                                             `/storage/event/${itemevent.pic_event}`
                                         "
                                         alt=""
-                                        class="w-10075"
+                                        class="w-100"
                                     />
                                 </td>
                                 <td

@@ -15,7 +15,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $allclient = Client::all();
+        $allclient = Client::orderBy('created_at', 'desc')->get();
 
         if ($allclient) {
             return response()->json([
@@ -72,13 +72,14 @@ class ClientController extends Controller
         $newclient = new Client();
         $rules = [
             'type_project' => 'required',
+            'location' => 'required',
             'name_client' => 'required',
-            'logo_client' => 'required|mimes:jpeg,jpg,png,gif',
+            'year' => 'required',
+            'status' => 'required',
             'project_name' => 'required',
             'main_pic' => 'required',
+            'grid_pic' => 'required',
             'article' => 'required',
-            'location' => 'required',
-            'year' => 'required',
             'pic1' => 'required|mimes:jpeg,jpg,png,gif',
             'pic2' => 'required|mimes:jpeg,jpg,png,gif'
         ];
@@ -92,35 +93,24 @@ class ClientController extends Controller
         }
 
         $newclient->type_project = $request->type_project;
+        $newclient->location = $request->location;
         $newclient->name_client = $request->name_client;
-        $newclient->project_name = $request->project_name;
+        $newclient->year = $request->year;
+        $newclient->status = $request->status;
         if ($request->main_pic) {
             $filename1 = $request->project_name . " main pic";
             $extension = $request->main_pic->extension();
             Storage::putFileAs('public/projectpicture', $request->main_pic, $filename1 . '.' . $extension);
         };
         $newclient->main_pic = $filename1 . '.' . $extension;
+        if ($request->grid_pic) {
+            $filename1 = $request->project_name . " grid pic";
+            $extension = $request->grid_pic->extension();
+            Storage::putFileAs('public/projectpicture', $request->grid_pic, $filename1 . '.' . $extension);
+        };
+        $newclient->project_name = $request->project_name;
+        $newclient->grid_pic = $filename1 . '.' . $extension;
         $newclient->article = $request->article;
-        $newclient->location = $request->location;
-        $newclient->year = $request->year;
-        $newclient->energy_savings = $request->energy_savings;
-        $newclient->water_savings = $request->water_savings;
-        $newclient->carbon_reduction = $request->carbon_reduction;
-        if ($request->designer1) {
-            $newclient->designer1 = $request->designer1;
-        };
-        if ($request->designer2) {
-            $newclient->designer2 = $request->designer2;
-        };
-        if ($request->designer3) {
-            $newclient->designer3 = $request->designer3;
-        };
-        if ($request->designer4) {
-            $newclient->designer4 = $request->designer4;
-        };
-        if ($request->designer5) {
-            $newclient->designer5 = $request->designer5;
-        };
         if ($request->energy_savings) {
             $newclient->energy_savings = $request->energy_savings;
         };
@@ -130,25 +120,62 @@ class ClientController extends Controller
         if ($request->carbon_reduction) {
             $newclient->carbon_reduction = $request->carbon_reduction;
         };
-        if ($request->logo_client) {
-            $filename2 = $request->project_name . "logo";
-            $extension = $request->logo_client->extension();
-            Storage::putFileAs('public/logoclient', $request->logo_client, $filename2 . '.' . $extension);
+        if ($request->embodied_energy) {
+            $newclient->embodied_energy = $request->embodied_energy;
         };
-        $newclient->logo_client = $filename2 . '.' . $extension;
+        if ($request->basic_design) {
+            $newclient->basic_design = $request->basic_design;
+        };
+        if ($request->main_contractor) {
+            $newclient->main_contractor = $request->main_contractor;
+        };
+        if ($request->architecht_build) {
+            $newclient->architecht_build = $request->architecht_build;
+        };
+        if ($request->architecht) {
+            $newclient->architecht = $request->architecht;
+        };
+        if ($request->sustainability_team) {
+            $newclient->sustainability_team = $request->sustainability_team;
+        };
+        if ($request->team_arsitektur) {
+            $newclient->team_arsitektur = $request->team_arsitektur;
+        };
+        if ($request->struktur) {
+            $newclient->struktur = $request->struktur;
+        };
+        if ($request->mep) {
+            $newclient->mep = $request->mep;
+        };
+        if ($request->qs) {
+            $newclient->qs = $request->qs;
+        };
+        if ($request->design_team) {
+            $newclient->design_team = $request->design_team;
+        };
+        if ($request->collaborators) {
+            $newclient->collaborators = $request->collaborators;
+        };
+        if ($request->fabrication_team) {
+            $newclient->fabrication_team = $request->fabrication_team;
+        };
+        if ($request->publication) {
+            $newclient->publication = $request->publication;
+        };
         if ($request->pic1) {
             $filename3 = $request->project_name . " pic1";
             $extension = $request->pic1->extension();
             Storage::putFileAs('public/projectpicture', $request->pic1, $filename3 . '.' . $extension);
         };
         $newclient->pic1 = $filename3 . '.' . $extension;
+        $newclient->name_pic1 = $request->name_pic1;
         if ($request->pic2) {
             $filename4 = $request->project_name . " pic2";
             $extension = $request->pic2->extension();
             Storage::putFileAs('public/projectpicture', $request->pic2, $filename4 . '.' . $extension);
         };
         $newclient->pic2 = $filename4 . '.' . $extension;
-
+        $newclient->name_pic2 = $request->name_pic2;
         if ($request->pic3) {
             $filename5 = $request->project_name . " pic3";
             $extension = $request->pic3->extension();
@@ -159,7 +186,7 @@ class ClientController extends Controller
         } else {
             $newclient->pic3 = NULL;
         }
-
+        $newclient->name_pic3 = $request->name_pic3;
         if ($request->pic4) {
             $filename6 = $request->project_name . " pic4";
             $extension = $request->pic4->extension();
@@ -170,7 +197,7 @@ class ClientController extends Controller
         } else {
             $newclient->pic4 = NULL;
         }
-
+        $newclient->name_pic4 = $request->name_pic4;
         if ($request->pic5) {
             $filename7 = $request->project_name . " pic5";
             $extension = $request->pic5->extension();
@@ -181,7 +208,7 @@ class ClientController extends Controller
         } else {
             $newclient->pic5 = NULL;
         }
-
+        $newclient->name_pic5 = $request->name_pic5;
         if ($request->pic6) {
             $filename8 = $request->project_name . " pic6";
             $extension = $request->pic6->extension();
@@ -192,7 +219,18 @@ class ClientController extends Controller
         } else {
             $newclient->pic6 = NULL;
         }
-        //dd($newclient->pic6);
+        $newclient->name_pic6 = $request->name_pic6;
+        if ($request->pic7) {
+            $filename9 = $request->project_name . " pic7";
+            $extension = $request->pic7->extension();
+            Storage::putFileAs('public/projectpicture', $request->pic7, $filename8 . '.' . $extension);
+        };
+        if ($request->pic7) {
+            $newclient->pic7 = $filename9 . '.' . $extension;
+        } else {
+            $newclient->pic7 = NULL;
+        }
+        $newclient->name_pic7 = $request->name_pic7;
         $newclient->save();
         //$newclient->create($request->all());
         return response()->json([
@@ -254,6 +292,8 @@ class ClientController extends Controller
         Storage::disk('local')->delete('public/logoclient/' . $targetLogoClient);
         $targetMainImage = $targetdelete->main_pic;
         Storage::disk('local')->delete('public/projectpicture/' . $targetMainImage);
+        $targetgridImage = $targetdelete->grid_pic;
+        Storage::disk('local')->delete('public/projectpicture/' . $targetgridImage);
         $targetPic1 = $targetdelete->pic1;
         Storage::disk('local')->delete('public/projectpicture/' . $targetPic1);
         $targetPic2 = $targetdelete->pic2;

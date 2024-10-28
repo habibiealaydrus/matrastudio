@@ -71,13 +71,12 @@
                                             class="form-label"
                                             >Event Article</label
                                         ><span class="required">*required</span>
-                                        <textarea
-                                            class="form-control"
-                                            id="article_event"
-                                            rows="3"
+
+                                        <ckeditor
                                             v-model="article_event"
-                                            required
-                                        ></textarea>
+                                            :editor="editor"
+                                            :config="editorConfig"
+                                        />
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label"
@@ -151,6 +150,82 @@
 <script setup>
 import axios from "axios";
 import { ref, onMounted } from "vue";
+
+import {
+    ClassicEditor,
+    Bold,
+    Essentials,
+    Italic,
+    Mention,
+    Paragraph,
+    Undo,
+    Underline,
+    Link,
+    List,
+    BlockQuote,
+    CodeBlock,
+    MediaEmbed,
+    Table,
+    TableToolbar,
+    Heading,
+    FontColor,
+    FontSize,
+    Highlight,
+    Alignment,
+} from "ckeditor5";
+import "ckeditor5/ckeditor5.css";
+import { Ckeditor } from "@ckeditor/ckeditor5-vue";
+
+// CKEditor instance and configuration
+const editor = ClassicEditor;
+const editorData = ref("<p>Hello from CKEditor 5 in Vue!</p>");
+const editorConfig = {
+    plugins: [
+        Bold,
+        Essentials,
+        Italic,
+        Mention,
+        Paragraph,
+        Undo,
+        Underline,
+        Link,
+        List,
+        BlockQuote,
+        CodeBlock,
+        MediaEmbed,
+        Table,
+        TableToolbar,
+        Heading,
+        FontColor,
+        FontSize,
+        Highlight,
+        Alignment,
+    ],
+    toolbar: [
+        "undo",
+        "redo",
+        "|",
+        "heading",
+        "|",
+        "bold",
+        "italic",
+        "underline",
+        "link",
+        "bulletedList",
+        "numberedList",
+        "|",
+        "blockQuote",
+        "codeBlock",
+        "|",
+        "insertTable",
+        "|",
+        "fontColor",
+        "fontSize",
+        "highlight",
+        "|",
+        "alignment",
+    ], // Full toolbar with all options
+};
 
 const pic_event = ref("");
 const thumbnail_event = ref("");

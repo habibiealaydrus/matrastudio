@@ -45,14 +45,7 @@
                                 >
                                     Detail
                                 </button>
-                                <button
-                                    class="btn btn-warning"
-                                    @click="getdetailtargetupdate(work.id)"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#editModal"
-                                >
-                                    Edit
-                                </button>
+
                                 <button
                                     class="btn btn-danger deleteitem"
                                     @click="deleteproject(work.id)"
@@ -104,18 +97,6 @@
                                         />
                                     </div>
                                     <div class="mb-3">
-                                        <label class="form-label">
-                                            Logo Client
-                                        </label>
-                                        <br />
-                                        <img
-                                            :src="`${baseURL}/storage/logoclient/${detailproject.logo_client}`"
-                                            alt=""
-                                            class="img-fluid"
-                                            style="width: 10%"
-                                        />
-                                    </div>
-                                    <div class="mb-3">
                                         <label class="form-label"
                                             >Nama Project</label
                                         >
@@ -134,7 +115,7 @@
                                         <br />
                                         <img
                                             alt=""
-                                            class="w-25 img-fluid"
+                                            class="img-fluid"
                                             :src="`${baseURL}/storage/projectpicture/${detailproject.main_pic}`"
                                         />
                                     </div>
@@ -144,13 +125,9 @@
                                             class="form-label"
                                             >Project Article</label
                                         >
-                                        <textarea
-                                            class="form-control"
-                                            id="article"
-                                            rows="3"
-                                            :value="`${detailproject.article}`"
-                                            disabled
-                                        ></textarea>
+                                        <div
+                                            v-html="detailproject.article"
+                                        ></div>
                                     </div>
                                     <div class="mb-3">
                                         <label
@@ -184,6 +161,23 @@
                                         <label
                                             for="exampleFormControlTextarea1"
                                             class="form-label"
+                                            >STATUS</label
+                                        >
+                                        <input
+                                            class="form-control"
+                                            id="year"
+                                            rows="3"
+                                            :value="`${detailproject.status}`"
+                                            disabled
+                                        />
+                                    </div>
+                                    <div
+                                        class="mb-3"
+                                        v-if="detailproject.energy_savings"
+                                    >
+                                        <label
+                                            for="exampleFormControlTextarea1"
+                                            class="form-label"
                                             >Energy Savings</label
                                         >
                                         <input
@@ -194,7 +188,10 @@
                                             disabled
                                         />
                                     </div>
-                                    <div class="mb-3">
+                                    <div
+                                        class="mb-3"
+                                        v-if="detailproject.energy_savings"
+                                    >
                                         <label
                                             for="exampleFormControlTextarea1"
                                             class="form-label"
@@ -208,87 +205,133 @@
                                             disabled
                                         />
                                     </div>
-                                    <div class="mb-3">
+                                    <div
+                                        class="mb-3"
+                                        v-if="detailproject.basic_design"
+                                    >
                                         <label
                                             for="exampleFormControlTextarea1"
                                             class="form-label"
-                                            >Carbon Reduction</label
+                                            >BASIC DESIGN</label
                                         >
                                         <input
                                             class="form-control"
-                                            id="carbon_reduction"
+                                            id="water_savings"
                                             rows="3"
-                                            :value="`${detailproject.carbon_reduction}`"
+                                            :value="`${detailproject.basic_design}`"
                                             disabled
                                         />
                                     </div>
-                                    <div class="mb-3">
+                                    <div
+                                        class="mb-3"
+                                        v-if="detailproject.main_contractor"
+                                    >
                                         <label
                                             for="exampleFormControlTextarea1"
-                                            class="form-label"
-                                            >Designer 1</label
+                                            class="form-label text-uppercase"
+                                            >Main Contractor</label
                                         >
                                         <input
                                             class="form-control"
-                                            id="designer1"
+                                            id="water_savings"
                                             rows="3"
-                                            :value="`${detailproject.designer1}`"
+                                            :value="`${detailproject.main_contractor}`"
                                             disabled
                                         />
                                     </div>
-                                    <div class="mb-3">
+                                    <div
+                                        class="mb-3"
+                                        v-if="detailproject.architecht_build"
+                                    >
                                         <label
                                             for="exampleFormControlTextarea1"
-                                            class="form-label"
-                                            >Designer 2</label
+                                            class="form-label text-uppercase"
+                                            >architecht & build</label
                                         >
                                         <input
                                             class="form-control"
-                                            id="designer2`"
+                                            id="water_savings"
                                             rows="3"
-                                            :value="`${detailproject.designer2}`"
+                                            :value="`${detailproject.architecht_build}`"
                                             disabled
                                         />
                                     </div>
-                                    <div class="mb-3">
+                                    <div
+                                        class="mb-3"
+                                        v-if="detailproject.sustainability_team"
+                                    >
                                         <label
                                             for="exampleFormControlTextarea1"
-                                            class="form-label"
-                                            >Designer 3</label
+                                            class="form-label text-uppercase"
+                                            >Sustainability team</label
+                                        >
+                                        <div
+                                            class="form-control"
+                                            v-html="
+                                                detailproject.sustainability_team
+                                            "
+                                            disabled
+                                        ></div>
+                                    </div>
+                                    <div
+                                        class="mb-3"
+                                        v-if="detailproject.team_arsitektur"
+                                    >
+                                        <label
+                                            for="exampleFormControlTextarea1"
+                                            class="form-label text-uppercase"
+                                        >
+                                            Architecture team</label
+                                        >
+                                        <div
+                                            v-html="
+                                                detailproject.team_arsitektur
+                                            "
+                                            disabled
+                                        ></div>
+                                    </div>
+                                    <div
+                                        class="mb-3"
+                                        v-if="detailproject.struktur"
+                                    >
+                                        <label
+                                            for="exampleFormControlTextarea1"
+                                            class="form-label text-uppercase"
+                                            >Struktur</label
                                         >
                                         <input
                                             class="form-control"
-                                            id="designer3`"
+                                            id="water_savings"
                                             rows="3"
-                                            :value="`${detailproject.designer3}`"
+                                            :value="`${detailproject.struktur}`"
                                             disabled
                                         />
                                     </div>
-                                    <div class="mb-3">
+                                    <div class="mb-3" v-if="detailproject.mep">
                                         <label
                                             for="exampleFormControlTextarea1"
-                                            class="form-label"
-                                            >Designer 4</label
+                                            class="form-label text-uppercase"
+                                            >MEP</label
                                         >
                                         <input
                                             class="form-control"
-                                            id="designer4`"
+                                            id="water_savings"
                                             rows="3"
-                                            :value="`${detailproject.designer4}`"
+                                            :value="`${detailproject.mep}`"
                                             disabled
                                         />
                                     </div>
-                                    <div class="mb-3">
+                                    <div class="mb-3" v-if="detailproject.qs">
                                         <label
                                             for="exampleFormControlTextarea1"
-                                            class="form-label"
-                                            >Designer 5</label
+                                            class="form-label text-uppercase"
+                                            >QS</label
                                         >
                                         <input
                                             class="form-control"
-                                            id="designer5"
+                                            id="water_savings"
                                             rows="3"
-                                            :value="`${detailproject.designer5}`"
+                                            :value="`${detailproject.qs}`"
                                             disabled
                                         />
                                     </div>
@@ -341,256 +384,6 @@
             </div>
         </div>
         <!-- Detail Project Modal End-->
-        <!-- Edit Project Modal  start -->
-        <div>
-            <div
-                class="modal fade modal-xl"
-                id="editModal"
-                tabindex="-1"
-                aria-labelledby="workModalLabel"
-                aria-hidden="true"
-            >
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header bg-warning">
-                            <h1 class="modal-title fs-5" id="editModalLabel">
-                                Edit Project
-                            </h1>
-                            <button
-                                type="button"
-                                class="btn-close"
-                                data-bs-dismiss="modal"
-                                aria-label="Close"
-                            ></button>
-                        </div>
-                        <div class="modal-body">
-                            <form @submit.prevent="updateproject">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <label class="form-label">
-                                                Type Project
-                                            </label>
-                                            <select
-                                                name=""
-                                                id=""
-                                                class="form-control"
-                                                v-model="type_project"
-                                            >
-                                                <option>
-                                                    {{
-                                                        existingdata.type_project
-                                                    }}
-                                                </option>
-                                                <option>
-                                                    {{ optiontipe }}
-                                                </option>
-                                            </select>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label"
-                                                >Nama Client</label
-                                            >
-                                            <input
-                                                type="text"
-                                                class="form-control"
-                                                id="name_client"
-                                                :value="`${existingdata.name_client}`"
-                                            />
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label">
-                                                Logo Client
-                                            </label>
-                                            <br />
-                                            <img
-                                                alt=""
-                                                class="img-fluid mb-1"
-                                                style="width: 10%"
-                                            />
-                                            <input
-                                                accept=".jpg, .png, .jpeg, .gif"
-                                                class="form-control"
-                                                name="logo_client"
-                                                type="file"
-                                                id="formFile"
-                                                ref="logo_client"
-                                                @change="
-                                                    getLogo(
-                                                        existingdata.logo_client
-                                                    )
-                                                "
-                                            />
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label"
-                                                >Nama Project</label
-                                            >
-                                            <input
-                                                type="text"
-                                                class="form-control"
-                                                id="project_name"
-                                                :value="`${existingdata.project_name}`"
-                                            />
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label">
-                                                Main Picture
-                                            </label>
-                                            <br />
-                                            <img
-                                                alt=""
-                                                class="w-25 img-fluid mb-1"
-                                            />
-                                            <input
-                                                ref="main_pic"
-                                                accept=".jpg, .png, .jpeg, .gif"
-                                                class="form-control"
-                                                type="file"
-                                                id="formFile"
-                                            />
-                                        </div>
-                                        <div class="mb-3">
-                                            <label
-                                                for="exampleFormControlTextarea1"
-                                                class="form-label"
-                                                >Project Article</label
-                                            >
-                                            <textarea
-                                                class="form-control"
-                                                id="article"
-                                                rows="3"
-                                                :value="`${existingdata.article}`"
-                                            ></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <label class="form-label">
-                                                Picture 1
-                                            </label>
-                                            <br />
-                                            <img
-                                                alt=""
-                                                class="w-25 img-fluid mb-1"
-                                            />
-                                            <input
-                                                ref="pic1"
-                                                accept=".jpg, .png, .jpeg, .gif"
-                                                class="form-control"
-                                                type="file"
-                                                id="formFile"
-                                            />
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label">
-                                                Picture 2
-                                            </label>
-                                            <br />
-                                            <img
-                                                alt=""
-                                                class="w-25 img-fluid mb-1"
-                                            />
-                                            <input
-                                                ref="pic2"
-                                                accept=".jpg, .png, .jpeg, .gif"
-                                                class="form-control"
-                                                type="file"
-                                                id="formFile"
-                                            />
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label">
-                                                Picture 3
-                                            </label>
-                                            <br />
-                                            <img
-                                                alt=""
-                                                class="w-25 img-fluid mb-1"
-                                            />
-                                            <input
-                                                ref="pic3"
-                                                accept=".jpg, .png, .jpeg, .gif"
-                                                class="form-control"
-                                                type="file"
-                                                id="formFile"
-                                            />
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label">
-                                                Picture 4
-                                            </label>
-                                            <br />
-                                            <img
-                                                alt=""
-                                                class="w-25 img-fluid"
-                                            />
-                                            <input
-                                                ref="pic4"
-                                                accept=".jpg, .png, .jpeg, .gif"
-                                                class="form-control"
-                                                type="file"
-                                                id="formFile"
-                                            />
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label">
-                                                Picture 5
-                                            </label>
-                                            <br />
-                                            <img
-                                                alt=""
-                                                class="w-25 img-fluid"
-                                            />
-                                            <input
-                                                ref="pic5"
-                                                accept=".jpg, .png, .jpeg, .gif"
-                                                class="form-control"
-                                                type="file"
-                                                id="formFile"
-                                            />
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label">
-                                                Picture 6
-                                            </label>
-                                            <br />
-                                            <img
-                                                alt=""
-                                                class="w-25 img-fluid"
-                                            />
-                                            <input
-                                                ref="pic6"
-                                                accept=".jpg, .png, .jpeg, .gif"
-                                                class="form-control"
-                                                type="file"
-                                                id="formFile"
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button
-                                        type="button"
-                                        class="btn btn-secondary"
-                                        data-bs-dismiss="modal"
-                                    >
-                                        Close
-                                    </button>
-                                    <button
-                                        type="submit"
-                                        class="btn btn-warning"
-                                        @click="updateProject"
-                                    >
-                                        Update Project
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </template>
 
@@ -598,6 +391,14 @@
 import axios from "axios";
 import { ref, onMounted } from "vue";
 import FormWork from "../components/FormWork.vue";
+import { toast } from "vue3-toastify";
+import "vue3-toastify/dist/index.css";
+
+const notify = (message) => {
+    toast.success(message, {
+        autoClose: 1000,
+    }); // ToastOptions
+};
 
 const project = ref([]);
 const baseURL = axios.defaults.baseURL;
@@ -617,7 +418,9 @@ const deleteproject = async (e) => {
     const urldeletenews = baseURL + "/api/clientdelete/" + id;
 
     const response = await axios.delete(urldeletenews);
-    alert("Project deleted");
+    notify("Work Deleted");
+    //alert("Project deleted");
+    window.location.href = "/admin/content";
 };
 
 const detailproject = ref([]);
@@ -630,33 +433,6 @@ const getdetailproject = async (e) => {
     //type_project.value = response.data.data.type_project;
 };
 
-const existingdata = ref([]);
-const optiontipe = ref([]);
-
-const getdetailtargetupdate = async (e) => {
-    const target = e;
-    // const urlDetailProject = baseURL + "/api/clientdetail/" + target;
-    // const response = await axios.get(urlDetailProject);
-
-    // type_project.value = response.data.data.type_project;
-    // if (type_project.value == "Arsitektur") {
-    //     optiontipe.value = "Green Building";
-    // } else {
-    //     optiontipe.value = "Arsitektur";
-    // }
-    // existingdata.value = response.data.data;
-};
-
-const getLogo = (e) => {
-    const file = e.target.files[0];
-};
-const updateProject = () => {
-    console.log(type_project.value);
-    console.log(name_client[2].value);
-    console.log(project_name[2].value);
-    console.log(article[2].value);
-    console.log(logo_client[2].value.files[0]);
-};
 onMounted(() => {
     getproject();
 });

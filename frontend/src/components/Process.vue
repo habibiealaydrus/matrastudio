@@ -176,9 +176,10 @@
                         collaborate.
                     </h3>
                     <div class="col-4 p-4">
-                        <button class="btn btn-light p-4">
-                            Book A Appointment
-                        </button>
+                        <a href="/contact" class="btn btn-light p-4">
+                            
+                            Contact
+                        </a href="/contact">
                     </div>
                 </div>
             </div>

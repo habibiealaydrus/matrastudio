@@ -1,7 +1,9 @@
 <template>
     <div>
-        <div class="card bg-success" style="width: 100%">
-            <div class="card-header d-flex justify-content-between flex-wrap">
+        <div class="card" style="width: 100%">
+            <div
+                class="card-header bg-success d-flex justify-content-between flex-wrap"
+            >
                 <div
                     class="text-white fs-3 text-start"
                     type="button"
@@ -54,9 +56,7 @@
                                     >
                                         Preview
                                     </button>
-                                    <button class="btn btn-warning">
-                                        Edit
-                                    </button>
+
                                     <button
                                         class="btn btn-danger"
                                         @click="deleteBlog(blog.id)"
@@ -135,7 +135,7 @@ const previewblog = (e) => {
 const deleteBlog = async (e) => {
     const idDeleteBlog = e;
     const url = axios.defaults.baseURL;
-    const apideleteBlog = url + "/deleteblog/";
+    const apideleteBlog = url + "/api/deleteblog/";
     const urlDeleteBlog = apideleteBlog + idDeleteBlog;
 
     const response = await axios.delete(urlDeleteBlog);

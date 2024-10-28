@@ -10,7 +10,7 @@
                     below, or schedule a call.
                 </p>
                 <div class="d-flex flex-column">
-                    <div class="py-1">
+                    <!-- <div class="py-1">
                         <p class="d-inline-flex gap-1">
                             <button
                                 class="btn btn-primary"
@@ -83,7 +83,7 @@
                                 </button>
                             </form>
                         </div>
-                    </div>
+                    </div> -->
                     <div>
                         <p class="d-inline-flex gap-1">
                             <button
@@ -94,7 +94,7 @@
                                 aria-expanded="false"
                                 aria-controls="forminquiry"
                             >
-                                Form with Enquiry
+                                Inquiry Form
                             </button>
                         </p>
                         <div class="collapse pb-3" id="forminquiry">
@@ -249,7 +249,7 @@
                                             for="exampleInputEmail1"
                                             class="form-label"
                                         >
-                                            What can we help you?
+                                            How can we help you?
                                         </label>
                                         <select
                                             v-model="type_project"
@@ -362,8 +362,9 @@ const subject_inquiry = ref("");
 const message_inquiry = ref("");
 const InputFile = ref("");
 
-const urladdmessage = "http://127.0.0.1:8000/api/addmessage";
-const urladdinquiry = "http://127.0.0.1:8000/api/inqurymessage";
+const baseURL = axios.defaults.baseURL;
+const urladdmessage = baseURL + "/api/addmessage";
+const urladdinquiry = baseURL + "/api/inqurymessage";
 
 const clearInput = () => {
     name.value = "";
@@ -380,10 +381,10 @@ const addmessage = async () => {
             subject: subject.value,
             message: message.value,
         };
-        console.log(data);
         const response = await axios.post(urladdmessage, data);
         clearInput();
         alert("Mesages has been sent");
+        window.location.href = "/contact";
     } catch (error) {
         console.log(error);
     }
@@ -412,7 +413,7 @@ const inquiryform = async () => {
 
         clearInput();
         alert("Your Inquiry has been sent");
-        window.location.href = "/about";
+        window.location.reload();
     } catch (error) {
         alert(error.response.data.message);
     }

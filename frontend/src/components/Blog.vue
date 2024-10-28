@@ -1,20 +1,23 @@
 <template>
-    <div class="row px-4 py-2 justify-content-center bg-white">
-        <div class="col-md-4" v-for="blog in blogs">
-            <div class="news px-5">
-                <a
-                    :href="`/blog/detail/${blog.id}`"
-                    class="link-offset-2 link-underline link-underline-opacity-0"
-                    style="color: black"
-                >
-                    <img
-                        :src="baseURL + `/storage/blog/${blog.main_img}`"
-                        alt=""
-                        class="w-100"
-                    />
-                    <h1>{{ blog.title_blog }}</h1>
-                    <p class="">{{ blog.article_blog.substr(0, 100) }}....</p>
-                </a>
+    <div class="container-fluid">
+        <div class="row bg-white">
+            <div class="col-md-4" v-for="blog in blogs">
+                <div class="news px-5">
+                    <a
+                        :href="`/blog/detail/${blog.id}`"
+                        class="link-offset-2 link-underline link-underline-opacity-0"
+                        style="color: black"
+                    >
+                        <img
+                            :src="baseURL + `/storage/blog/${blog.main_img}`"
+                            alt=""
+                            class="img-fluid"
+                        />
+                        <h1>{{ blog.title_blog }}</h1>
+
+                        <div v-html="blog.article_blog.substr(0, 150)"></div>
+                    </a>
+                </div>
             </div>
         </div>
     </div>

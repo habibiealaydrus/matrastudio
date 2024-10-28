@@ -1,12 +1,13 @@
 <template>
     <nav class="navbar navbar-expand-lg bg-white">
         <div class="container-fluid">
-            <img
-                src="../assets/img/logo-matra-studio.png"
-                style="width: 15%"
-                alt=""
-            />
-
+            <div class="col-6">
+                <img
+                    src="../assets/img/logo-matra-studio.png"
+                    class="img-fluid float-start"
+                    alt=""
+                />
+            </div>
             <button
                 class="navbar-toggler"
                 type="button"
@@ -44,11 +45,11 @@
                             >About</RouterLink
                         >
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <RouterLink class="nav-link" to="/process"
                             >Process</RouterLink
                         >
-                    </li>
+                    </li> -->
                     <li class="updates nav-item dropdown">
                         <a
                             class="nav-link dropdown-toggle"
@@ -96,19 +97,31 @@
                     </li>
                     <div class="d-flex flex-row mx-auto">
                         <li class="nav-item">
-                            <a class="nav-link p-2" href="#">
+                            <a
+                                class="nav-link p-2"
+                                href="https://www.instagram.com/matra.studio"
+                                target="_blank"
+                            >
                                 <font-awesome-icon
                                     :icon="['fab', 'instagram']"
                                 />
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link p-2" href="#">
+                            <a
+                                class="nav-link p-2"
+                                href="https://www.youtube.com/@matraarchitecturestudio1353"
+                                target="_blank"
+                            >
                                 <font-awesome-icon :icon="['fab', 'youtube']" />
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link p-2" href="#">
+                            <a
+                                class="nav-link p-2"
+                                href="https://www.facebook.com/matrastudio/?locale=id_ID"
+                                target="_blank"
+                            >
                                 <font-awesome-icon
                                     :icon="['fab', 'facebook']"
                                 />

@@ -71,6 +71,7 @@ const logout = async () => {
     try {
         await axios.get(urlLogout, config).then((response) => {
             window.location.href = "/login";
+            alert("You successfully logout");
         });
         localStorage.clear();
     } catch (error) {

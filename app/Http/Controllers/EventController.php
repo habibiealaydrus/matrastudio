@@ -15,7 +15,7 @@ class EventController extends Controller
      */
     public function index()
     {
-        $event = Event::all();
+        $event = Event::orderBy('created_at', 'desc')->get();
         if ($event) {
             return response()->json([
                 "status" => true,
@@ -70,6 +70,7 @@ class EventController extends Controller
         $addevent = new Event();
         $rules = [
             'pic_event' => 'required|mimes:jpeg,jpg,png,gif',
+            'thumbnail_event' => 'required|mimes:jpeg,jpg,png,gif',
             'title_event' => 'required',
             'article_event' => 'required',
             'location_event' => 'required',
@@ -86,7 +87,6 @@ class EventController extends Controller
             ], 401);
         }
         $idFile = Str::random(4);
-
         $addevent->title_event = $request->title_event;
         if ($request->pic_event) {
             $filename1 = $idFile . "picevent";
@@ -94,6 +94,12 @@ class EventController extends Controller
             Storage::putFileAs('public/event', $request->pic_event, $filename1 . '.' . $extension);
         };
         $addevent->pic_event = $filename1 . '.' . $extension;
+        if ($request->thumbnail_event) {
+            $filename1 = $idFile . "thumbnail event";
+            $extension = $request->thumbnail_event->extension();
+            Storage::putFileAs('public/event', $request->thumbnail_event, $filename1 . '.' . $extension);
+        };
+        $addevent->thumbnail_event = $filename1 . '.' . $extension;
         $addevent->location_event = $request->location_event;
         $addevent->article_event = $request->article_event;
         $addevent->date = $request->date;
@@ -148,6 +154,11 @@ class EventController extends Controller
         $deleteTarget = Event::find($id);
         if ($deleteTarget->pic_event) {
             $targetDeletePic = $deleteTarget->pic_event;
+            Storage::disk('local')->delete('public/event/' . $targetDeletePic);
+        }
+        $deleteTarget->delete();
+        if ($deleteTarget->thumbnail_event) {
+            $targetDeletePic = $deleteTarget->thumbnail_event;
             Storage::disk('local')->delete('public/event/' . $targetDeletePic);
         }
         $deleteTarget->delete();

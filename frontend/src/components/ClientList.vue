@@ -1,7 +1,9 @@
 <template>
     <div>
-        <div class="card bg-info-subtle" style="width: 100%">
-            <div class="card-header d-flex justify-content-between flex-wrap">
+        <div class="card" style="width: 100%">
+            <div
+                class="card-header bg-info-subtle d-flex justify-content-between flex-wrap"
+            >
                 <div
                     class="text-dark fs-3 text-start"
                     type="button"
@@ -39,7 +41,10 @@
                                     <img
                                         alt=""
                                         class="w-50"
-                                        :src="`https://mantra.matrastudio.com/storage/app/public/projectclients/${client.projectclient_img}`"
+                                        :src="
+                                            baseURL +
+                                            `/storage/projectclients/${client.projectclient_img}`
+                                        "
                                     />
                                 </td>
                                 <td
@@ -54,9 +59,7 @@
                                     >
                                         Preview
                                     </button>
-                                    <button class="btn btn-warning">
-                                        Edit
-                                    </button>
+
                                     <button
                                         class="btn btn-danger"
                                         @click="deleteclient(client.id)"

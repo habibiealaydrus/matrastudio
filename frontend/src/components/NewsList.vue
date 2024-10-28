@@ -1,7 +1,9 @@
 <template>
     <div>
-        <div class="card bg-info" style="width: 100%">
-            <div class="card-header d-flex justify-content-between flex-wrap">
+        <div class="card" style="width: 100%">
+            <div
+                class="card-header d-flex justify-content-between flex-wrap bg-info"
+            >
                 <div
                     class="text-white fs-3 text-start"
                     type="button"
@@ -37,13 +39,16 @@
                                 <td>{{ itemsnews.headline_news }}</td>
                                 <td>
                                     <img
-                                        :src="`http://127.0.0.1:8000/storage/news/${itemsnews.main_pic}`"
+                                        :src="
+                                            baseURL +
+                                            `/storage/news/${itemsnews.main_pic}`
+                                        "
                                         alt=""
                                         class="img-fluid"
                                     />
                                 </td>
                                 <td
-                                    class="d-flex flex-column gap-3 align-items-center"
+                                    class="d-flex flex-column gap-1 align-items-center"
                                 >
                                     <button
                                         class="btn btn-primary"
@@ -52,9 +57,6 @@
                                         data-bs-target="#newsDetailModal"
                                     >
                                         Preview
-                                    </button>
-                                    <button class="btn btn-warning" disabled>
-                                        Edit
                                     </button>
                                     <button
                                         class="btn btn-danger"
@@ -94,7 +96,7 @@
                             <div class="modal-body h-100">
                                 <div v-if="`${idNews}`">
                                     <iframe
-                                        :src="`http://192.168.1.97:5000/news/detail/${idNews}`"
+                                        :src="`/news/detail/${idNews}`"
                                         frameborder="0"
                                         class="w-100"
                                         style="min-height: 75vh"
@@ -117,6 +119,7 @@ import FormAddNews from "../components/FormAddNews.vue";
 
 const news = ref([]);
 const baseURL = axios.defaults.baseURL;
+
 const urlnews = baseURL + "/api/newsall";
 
 const getnews = async () => {
@@ -135,7 +138,8 @@ const deleteNews = async (e) => {
     //alert(idNews.value);
     const urldeletenews = baseURL + "/api/deletenews/" + idNews.value;
     const response = await axios.delete(urldeletenews);
-    alert(response);
+    alert("News Deleted");
+    window.location.href = "/admin/content";
 };
 onMounted(() => {
     getnews();

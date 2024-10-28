@@ -25,9 +25,11 @@
                             </button>
                         </div>
                         <h1>{{ event.title_event }}</h1>
-                        <p class="">
-                            {{ event.article_event.substr(0, 100) }}.....
-                        </p>
+                        <div
+                            v-html="
+                                event.article_event.substring(0, 150) + '...'
+                            "
+                        ></div>
                     </a>
                 </div>
             </div>

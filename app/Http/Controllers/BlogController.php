@@ -83,17 +83,14 @@ class BlogController extends Controller
             ], 401);
         }
         $idFile = Str::random(6);
-
         if ($request->main_img) {
             $filename1 = $idFile . "mainpic";
             $extension = $request->main_img->extension();
             Storage::putFileAs('public/blog', $request->main_img, $filename1 . '.' . $extension);
         };
         $newBlog->main_img = $filename1 . '.' . $extension;
-
         $newBlog->title_blog = $request->title_blog;
         $newBlog->article_blog = $request->article_blog;
-
         if ($request->pic1) {
             $filename2 = $idFile . "pic1";
             $extension = $request->pic1->extension();
@@ -104,7 +101,6 @@ class BlogController extends Controller
         } else {
             $newBlog->pic1 = NULL;
         }
-
         if ($request->pic2) {
             $filename3 = $idFile . "pic2";
             $extension = $request->pic2->extension();
@@ -115,7 +111,6 @@ class BlogController extends Controller
         } else {
             $newBlog->pic2 = NULL;
         }
-
         if ($request->pic3) {
             $filename3 = $idFile . "pic3";
             $extension = $request->pic3->extension();
@@ -126,7 +121,6 @@ class BlogController extends Controller
         } else {
             $newBlog->pic3 = NULL;
         }
-
         if ($request->pic4) {
             $filename4 = $idFile . "pic4";
             $extension = $request->pic4->extension();
@@ -137,7 +131,6 @@ class BlogController extends Controller
         } else {
             $newBlog->pic4 = NULL;
         }
-
         $newBlog->save();
         return response()->json([
             'status' => true,

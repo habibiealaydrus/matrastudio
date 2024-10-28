@@ -3,18 +3,14 @@
         <img
             :src="baseURL + `/storage/news/${news.main_pic}`"
             alt=""
-            class="w-100 img-fluid"
-            style="height: 100dvh"
+            class="img-fluid"
         />
-        <div class="container-fluid p-5 bg-dark text-white text-left">
+        <div class="container-fluid p-1 bg-dark">
             <div class="row justify-content-center">
-                <div class="col-6 fs-5">
+                <div class="col-6 fs-5 text-white">
                     <h3 class="h3 text-left">News</h3>
                     <p class="display-5 fw-medium">{{ news.headline_news }}</p>
-                    <h3 class="h3 text-left"></h3>
-                    <p class="pt-5">
-                        {{ news.article_news }}
-                    </p>
+                    <div v-html="news.article_news"></div>
                     <a :href="`${news.link_berita}`" class="my-5">
                         <button class="btn btn-primary">Link Sumber</button>
                     </a>

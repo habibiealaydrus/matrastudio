@@ -13,7 +13,7 @@
                         style="text-decoration: none"
                     >
                         <div
-                            class="d-flex justify-content-center p-5 headernews"
+                            class="d-flex justify-content-center headernews"
                             style="height: 300px"
                             id="headernews"
                         >
@@ -23,7 +23,7 @@
                                     `/storage/news/logo_news/${item.logo_news}`
                                 "
                                 alt=""
-                                class="w-100 p-5"
+                                class="w-100"
                             />
                         </div>
                         <div class="newscontent" id="newscontent">

@@ -39,122 +39,120 @@
                 </p>
             </div>
         </div>
-    </div>
-    <div class="container-fluid p-0">
-        <img
-            src="../assets/img/SUT_Sustainabilty.jpg"
-            class="img-fluid"
-            alt=""
-        />
-    </div>
-    <div class="container-fluid" style="padding: 5% 10% 5% 10%">
-        <!-- atas/kanan/bawah/kiri -->
         <div class="row">
-            <div class="col-sm-6">
+            <img
+                src="../assets/img/SUT_Sustainabilty.jpg"
+                class="img-fluid m-0 p-0"
+                alt=""
+            />
+        </div>
+    </div>
+
+    <div class="container-fluid p-5 text-start bg-white">
+        <div class="row px-5">
+            <div class="col-lg-6 col-md-12">
                 <div class="row">
-                    <div class="col-2">
+                    <div class="col-3">
                         <img
                             src="../assets/img/lightning.png"
-                            style="
-                                max-height: 100px;
-                                background-color: transparent;
-                            "
+                            style="background-color: transparent"
                             alt=""
-                            class="img-fluid"
+                            class="w-100"
                         />
                     </div>
-                    <div class="col-10">
-                        <div class="row">
-                            <div
-                                class="col-12 display-3 pb-0 counter border-0"
-                                style="--from: 0; --to: 745656; --time: 4s"
-                            ></div>
-                            <div class="col-12 text-nowrap">
-                                Energy Savings (kWh/year)
-                            </div>
+                    <div class="col-9">
+                        <div>
+                            <p
+                                class="display-6 counter"
+                                :style="`
+                                                --from: 0;
+                                                --to: ${Energy};
+                                                --time: 4s;
+                                            `"
+                            ></p>
+                            <p class="fs-5">Energy Savings (kWh/year)</p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6">
+            <div class="col-lg-6 col-md-12">
                 <div class="row">
-                    <div class="col-4 text-center">
+                    <div class="col-3">
                         <img
                             src="../assets/img/co2.png"
-                            style="
-                                max-height: 100px;
-                                background-color: transparent;
-                            "
+                            style="background-color: transparent"
                             alt=""
-                            class="img-fluid"
+                            class="w-100"
                         />
                     </div>
-                    <div class="col-8">
-                        <div class="row">
-                            <div
-                                class="col-12 display-3 pb-0 counter border-0"
-                                style="--from: 0; --to: 145656; --time: 4s"
-                            ></div>
-                            <div class="col-12 text-nowrap">
+                    <div class="col-9">
+                        <div>
+                            <p
+                                class="display-6 counter"
+                                :style="`
+                                                --from: 0;
+                                                --to: ${Carbon};
+                                                --time: 4s;
+                                            `"
+                            ></p>
+                            <p class="fs-5 pt-0">
                                 Carbon Reduction (tC0<sub
                                     style="background-color: transparent"
                                     >2</sub
                                 >e/year)
-                            </div>
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-6">
+        <div class="row px-5 pt-4">
+            <div class="col-lg-6 col-md-12">
                 <div class="row">
-                    <div class="col-2">
+                    <div class="col-3">
                         <img
                             src="../assets/img/water.png"
-                            style="
-                                max-height: 100px;
-                                background-color: transparent;
-                            "
+                            style="background-color: transparent"
                             alt=""
-                            class="img-fluid"
+                            class="w-100"
                         />
                     </div>
-                    <div class="col-10">
-                        <div class="row">
-                            <div
-                                class="col-12 display-3 pb-0 counter border-0"
-                                style="--from: 0; --to: 22745; --time: 4s"
-                            ></div>
-                            <div class="col-12 text-nowrap">
-                                Water Savings (liters)
-                            </div>
+                    <div class="col-9">
+                        <div>
+                            <p
+                                class="display-6 counter"
+                                :style="`
+                                                --from: 0;
+                                                --to: ${Water};
+                                                --time: 4s;
+                                            `"
+                            ></p>
+                            <p class="fs-5">Water Savings (liters)</p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-lg-6 col-md-12">
                 <div class="row">
-                    <div class="col-4 text-center">
+                    <div class="col-3">
                         <img
                             src="../assets/img/Eett.png"
-                            style="
-                                max-height: 100px;
-                                background-color: transparent;
-                            "
+                            style="background-color: transparent"
                             alt=""
-                            class="img-fluid"
+                            class="w-100"
                         />
                     </div>
-                    <div class="col-8">
-                        <div class="row">
-                            <div
-                                class="col-12 display-3 pb-0 counter border-0"
-                                style="--from: 0; --to: 145656; --time: 4s"
-                            ></div>
-                            <div class="col-12 text-nowrap">
-                                Embodied Energy (GJ)
-                            </div>
+                    <div class="col-9">
+                        <div>
+                            <p
+                                class="display-6 counter"
+                                :style="`
+                                                --from: 0;
+                                                --to: ${Embodied};
+                                                --time: 4s;
+                                            `"
+                            ></p>
+                            <p class="fs-5 pt-0">Embodied Energy (GJ)</p>
                         </div>
                     </div>
                 </div>
@@ -163,7 +161,12 @@
     </div>
 </template>
 
-<script setup></script>
+<script setup>
+const Water = 22745;
+const Carbon = 145656;
+const Embodied = 145656;
+const Energy = 745656;
+</script>
 
 <style>
 @property --from {
