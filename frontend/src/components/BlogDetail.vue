@@ -1,11 +1,10 @@
 <template>
     <div>
-        <img
-            :src="baseURL + `/storage/blog/${blog.main_img}`"
-            alt="Blog Image"
-            class="img-fluid"
-        />
         <div class="container-fluid p-0 bg-white">
+            <img
+            :src="baseURL + `/public/storage/blog/${blog.main_img}`"
+            class="rounded mx-auto d-block"
+        />
             <div class="row justify-content-center">
                 <div class="col-6 fs-5">
                     <h3 class="h3">Blog</h3>
@@ -52,7 +51,7 @@ const id = window.location.pathname.split("/").pop(); // Get the last segment of
 
 const getDetailBlog = async () => {
     try {
-        const response = await axios.get(`${baseURL}/api/detailblog/${id}`);
+        const response = await axios.get(`${baseURL}/public/api/detailblog/${id}`);
         blog.value = response.data.data;
     } catch (error) {
         console.error("Error fetching blog details:", error);

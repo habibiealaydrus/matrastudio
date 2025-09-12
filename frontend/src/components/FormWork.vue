@@ -665,7 +665,7 @@ const name_pic7 = ref("");
 
 const baseURL = axios.defaults.baseURL;
 
-const urladdproject = baseURL + "/api/addclient";
+const urladdproject = baseURL + "/public/api/addclient";
 
 const clearInput = () => {
     type_project.value = "";

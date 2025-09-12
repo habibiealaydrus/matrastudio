@@ -1,7 +1,7 @@
 <template>
     <div>
         <img
-            :src="baseURL + `/storage/event/${event.pic_event}`"
+            :src="baseURL + `/public/storage/event/${event.pic_event}`"
             alt=""
             class="w-100 img-fluid"
         />
@@ -52,7 +52,7 @@ const date = ref([]);
 
 const id = window.location.pathname.substring(13);
 const baseURL = axios.defaults.baseURL;
-const urldetail = baseURL + "/api/detilevent" + id;
+const urldetail = baseURL + "/public/api/detilevent" + id;
 
 const getdetailevent = async () => {
     const response = await axios.get(urldetail);

@@ -14,53 +14,63 @@
             </p>
         </div>
 
-        <div class="my-5 d-flex flex-row justify-content-center">
-            <div>
-                <img
-                    src="../assets/img/profile/Rizkikay.jpeg"
-                    class="px-5 img-fluid"
-                    alt=""
-                />
-                <p class="fs-4 mb-0 pb-0">Ar. Rizki T. Siregar, M.T, GP</p>
-                <span class="fs-4 mt-0 pt-0">Co-founder/CEO</span>
-            </div>
-            <div>
-                <img
-                    src="../assets/img/profile/yasser.jpeg"
-                    class="px-5 img-fluid"
-                    alt=""
-                />
-                <p class="fs-4 mb-0 pb-0">Ar. Yasser Hafizs,S.T , M.T, GP</p>
-                <span class="fs-4 mt-0 pt-0">Co-founder/Design Director</span>
+        <div class="my-5 container">
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <img
+                        src="../assets/img/profile/Rizkikay.jpeg"
+                        class="px-5 img-fluid"
+                        alt=""
+                    />
+                    <p class="fs-4 mb-0 pb-0">Ar. Rizki T. Siregar, M.T, GP</p>
+                    <span class="fs-4 mt-0 pt-0">Co-founder/CEO</span>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <img
+                        src="../assets/img/profile/yasser.jpeg"
+                        class="px-5 img-fluid"
+                        alt=""
+                    />
+                    <p class="fs-4 mb-0 pb-0">
+                        Ar. Yasser Hafizs,S.T , M.T, GP
+                    </p>
+                    <span class="fs-4 mt-0 pt-0"
+                        >Co-founder/Design Director</span
+                    >
+                </div>
             </div>
         </div>
-        <div class="my-5 d-flex flex-row justify-content-center">
-            <div>
-                <img
-                    src="../assets/img/profile/Aurora.jpg"
-                    class="px-5 img-fluid"
-                    alt=""
-                />
-                <p class="fs-4 mb-0 pb-0">Aurora F. Dahniar, S.E</p>
-                <span class="fs-4 mt-0 pt-0">Finance Administrator</span>
-            </div>
-            <div>
-                <img
-                    src="../assets/img/profile/Erika.jpg"
-                    class="px-5 img-fluid"
-                    alt=""
-                />
-                <p class="fs-4 mb-0 pb-0">Erika Angelina, S.Ar</p>
-                <span class="fs-4 mt-0 pt-0">Sustainability Specialist</span>
-            </div>
-            <div>
-                <img
-                    src="../assets/img/profile/Jonathan.jpg"
-                    class="px-5 img-fluid"
-                    alt=""
-                />
-                <p class="fs-4 mb-0 pb-0">Jonathan A. Danilo, S.Ar</p>
-                <span class="fs-4 mt-0 pt-0">Architectural Designer</span>
+        <div class="my-5 container">
+            <div class="row">
+                <div class="col-md-4 col-sm-12">
+                    <img
+                        src="../assets/img/profile/Aurora.jpg"
+                        class="px-5 img-fluid"
+                        alt=""
+                    />
+                    <p class="fs-4 mb-0 pb-0">Aurora F. Dahniar, S.E</p>
+                    <span class="fs-4 mt-0 pt-0">Finance Administrator</span>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <img
+                        src="../assets/img/profile/Erika.jpg"
+                        class="px-5 img-fluid"
+                        alt=""
+                    />
+                    <p class="fs-4 mb-0 pb-0">Erika Angelina, S.Ar</p>
+                    <span class="fs-4 mt-0 pt-0"
+                        >Sustainability Specialist</span
+                    >
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <img
+                        src="../assets/img/profile/Jonathan.jpg"
+                        class="px-5 img-fluid"
+                        alt=""
+                    />
+                    <p class="fs-4 mb-0 pb-0">Jonathan A. Danilo, S.Ar</p>
+                    <span class="fs-4 mt-0 pt-0">Architectural Designer</span>
+                </div>
             </div>
         </div>
 
@@ -78,7 +88,7 @@
                         class="img-fluid"
                         :src="
                             baseURL +
-                            `/storage/projectclients/${logo.projectclient_img}`
+                            `/public/storage/projectclients/${logo.projectclient_img}`
                         "
                     />
                 </div>
@@ -93,7 +103,7 @@ import { ref, onMounted } from "vue";
 
 const baseURL = axios.defaults.baseURL;
 
-const urllogoclient = baseURL + "/api/allimageclient";
+const urllogoclient = baseURL + "/public/api/allimageclient";
 const logoclients = ref([]);
 
 const getlogoclient = async () => {

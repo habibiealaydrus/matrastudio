@@ -12,7 +12,7 @@
                             <img
                                 :src="
                                     baseURL +
-                                    `/storage/event/${event.thumbnail_event}`
+                                    `/public/storage/event/${event.pic_event}`
                                 "
                                 alt=""
                                 class="w-100"
@@ -43,7 +43,8 @@ import { ref, onMounted } from "vue";
 
 const events = ref([]);
 const baseURL = axios.defaults.baseURL;
-const urlevent = baseURL + "/api/event";
+const urlevent = baseURL + "/public/api/event";
+
 const today = new Date();
 const date =
     today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();

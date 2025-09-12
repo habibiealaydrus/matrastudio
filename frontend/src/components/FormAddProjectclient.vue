@@ -82,7 +82,7 @@ const projectclient_name = ref("");
 const projectclient_img = ref("");
 
 const baseURL = axios.defaults.baseURL;
-const urladdimgclient = baseURL + "/api/addimageclient";
+const urladdimgclient = baseURL + "/public/api/addimageclient";
 
 const clearInput = () => {
     projectclient_name.value = "";

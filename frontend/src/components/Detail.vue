@@ -1,7 +1,10 @@
 <template>
     <div class="bg-white">
         <img
-            :src="baseURL + `/storage/projectpicture/${detailproject.main_pic}`"
+            :src="
+                baseURL +
+                `/public/storage/projectpicture/${detailproject.main_pic}`
+            "
             alt=""
             class="w-100 img-fluid"
         />
@@ -347,7 +350,7 @@
                     <img
                         :src="
                             baseURL +
-                            `/storage/projectpicture/${detailproject.pic1}`
+                            `/public/storage/projectpicture/${detailproject.pic1}`
                         "
                         alt=""
                         class="w-100 img-fluid"
@@ -358,7 +361,7 @@
                     <img
                         :src="
                             baseURL +
-                            `/storage/projectpicture/${detailproject.pic2}`
+                            `/public/storage/projectpicture/${detailproject.pic2}`
                         "
                         class="w-100 img-fluid"
                         alt=""
@@ -372,7 +375,7 @@
                     <img
                         :src="
                             baseURL +
-                            `/storage/projectpicture/${detailproject.pic3}`
+                            `/public/storage/projectpicture/${detailproject.pic3}`
                         "
                         alt=""
                         class="w-100 img-fluid"
@@ -386,7 +389,7 @@
                     <img
                         :src="
                             baseURL +
-                            `/storage/projectpicture/${detailproject.pic4}`
+                            `/public/storage/projectpicture/${detailproject.pic4}`
                         "
                         class="w-100 img-fluid"
                         alt=""
@@ -397,7 +400,7 @@
                     <img
                         :src="
                             baseURL +
-                            `/storage/projectpicture/${detailproject.pic5}`
+                            `/public/storage/projectpicture/${detailproject.pic5}`
                         "
                         class="w-100 img-fluid"
                         alt=""
@@ -411,7 +414,7 @@
                     <img
                         :src="
                             baseURL +
-                            `/storage/projectpicture/${detailproject.pic6}`
+                            `/public/storage/projectpicture/${detailproject.pic6}`
                         "
                         class="w-100 img-fluid"
                         alt=""
@@ -422,7 +425,7 @@
                     <img
                         :src="
                             baseURL +
-                            `/storage/projectpicture/${detailproject.pic7}`
+                            `/public/storage/projectpicture/${detailproject.pic7}`
                         "
                         class="w-100 img-fluid"
                         alt=""
@@ -444,7 +447,9 @@
 import axios from "axios";
 import { ref, onMounted } from "vue";
 
-const id = window.location.pathname.substring(13);
+const id = window.location.pathname.slice(13);
+console.log(id);
+
 const detailproject = ref([]);
 const designTeam = ref([]);
 const team = ref([]);
@@ -454,7 +459,7 @@ const Water = ref([]);
 const Embodied = ref([]);
 
 const baseURL = axios.defaults.baseURL;
-const urldetail = baseURL + "/api/clientdetail/" + id;
+const urldetail = baseURL + "/public/api/clientdetail/" + id;
 
 const getdetailproject = async () => {
     try {

@@ -221,7 +221,7 @@ const pic3 = ref("");
 const pic4 = ref("");
 
 const baseURL = axios.defaults.baseURL;
-const urladdblog = baseURL + "/api/addblog";
+const urladdblog = baseURL + "/public/api/addblog";
 
 const clearInput = () => {
     main_img.value = "";

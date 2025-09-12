@@ -5,7 +5,7 @@ import App from "./App.vue";
 import router from "./router";
 import axios from "axios";
 
-axios.defaults.baseURL = "https://mantra.matrastudio.com/public";
+axios.defaults.baseURL = "http://127.0.0.1:8000/";
 
 /* import the fontawesome core */
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -27,6 +27,7 @@ import {
     faFacebook,
     faInstagram,
     faYoutube,
+    faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
 import { Axios } from "axios";
 
@@ -36,6 +37,7 @@ library.add(
     faInstagram,
     faFacebook,
     faYoutube,
+    faLinkedin,
     faArrowLeft,
     faImage,
     faEnvelope,

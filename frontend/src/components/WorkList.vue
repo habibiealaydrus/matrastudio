@@ -340,32 +340,50 @@
                                     <img
                                         class="img-fluid"
                                         alt=""
-                                        :src="`${baseURL}/storage/projectpicture/${detailproject.pic1}`"
+                                        :src="
+                                            baseURL +
+                                            `/public/storage/projectpicture/${detailproject.pic1}`
+                                        "
                                     />
                                     <img
                                         class="img-fluid"
                                         alt=""
-                                        :src="`${baseURL}/storage/projectpicture/${detailproject.pic2}`"
+                                        :src="
+                                            baseURL +
+                                            `/public/storage/projectpicture/${detailproject.pic2}`
+                                        "
                                     />
                                     <img
                                         class="img-fluid"
                                         alt=""
-                                        :src="`${baseURL}/storage/projectpicture/${detailproject.pic3}`"
+                                        :src="
+                                            baseURL +
+                                            `/public/storage/projectpicture/${detailproject.pic3}`
+                                        "
                                     />
                                     <img
                                         class="img-fluid"
                                         alt=""
-                                        :src="`${baseURL}/storage/projectpicture/${detailproject.pic4}`"
+                                        :src="
+                                            baseURL +
+                                            `/public/storage/projectpicture/${detailproject.pic4}`
+                                        "
                                     />
                                     <img
                                         class="img-fluid"
                                         alt=""
-                                        :src="`${baseURL}/storage/projectpicture/${detailproject.pic5}`"
+                                        :src="
+                                            baseURL +
+                                            `/public/storage/projectpicture/${detailproject.pic5}`
+                                        "
                                     />
                                     <img
                                         class="img-fluid"
                                         alt=""
-                                        :src="`${baseURL}/storage/projectpicture/${detailproject.pic6}`"
+                                        :src="
+                                            baseURL +
+                                            `/public/storage/projectpicture/${detailproject.pic6}`
+                                        "
                                     />
                                 </div>
                             </div>
@@ -403,7 +421,7 @@ const notify = (message) => {
 const project = ref([]);
 const baseURL = axios.defaults.baseURL;
 
-const urlproject = baseURL + "/api/client";
+const urlproject = baseURL + "/public/api/client";
 
 const type_project = ref([]);
 
@@ -427,7 +445,7 @@ const detailproject = ref([]);
 
 const getdetailproject = async (e) => {
     const idDetail = e;
-    const urlDetailProject = baseURL + "/api/clientdetail/" + idDetail;
+    const urlDetailProject = baseURL + "/public/api/clientdetail/" + idDetail;
     const response = await axios.get(urlDetailProject);
     detailproject.value = response.data.data;
     //type_project.value = response.data.data.type_project;

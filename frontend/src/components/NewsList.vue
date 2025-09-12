@@ -120,7 +120,7 @@ import FormAddNews from "../components/FormAddNews.vue";
 const news = ref([]);
 const baseURL = axios.defaults.baseURL;
 
-const urlnews = baseURL + "/api/newsall";
+const urlnews = baseURL + "/public/api/newsall";
 
 const getnews = async () => {
     const response = await axios.get(urlnews);
@@ -136,7 +136,7 @@ const getIdNews = (e) => {
 const deleteNews = async (e) => {
     getIdNews(e);
     //alert(idNews.value);
-    const urldeletenews = baseURL + "/api/deletenews/" + idNews.value;
+    const urldeletenews = baseURL + "/public/api/deletenews/" + idNews.value;
     const response = await axios.delete(urldeletenews);
     alert("News Deleted");
     window.location.href = "/admin/content";

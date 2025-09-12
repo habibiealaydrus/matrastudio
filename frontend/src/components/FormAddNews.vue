@@ -197,7 +197,7 @@ const article_news = ref("");
 const link_berita = ref("");
 
 const baseURL = axios.defaults.baseURL;
-const urladdnews = baseURL + "/api/addnews";
+const urladdnews = baseURL + "/public/api/addnews";
 
 const clearInput = () => {
     main_pic.value = "";

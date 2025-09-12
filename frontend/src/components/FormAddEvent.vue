@@ -237,7 +237,7 @@ const start_time = ref("");
 const end_time = ref("");
 
 const baseURL = axios.defaults.baseURL;
-const urladdevent = baseURL + "/api/addevent";
+const urladdevent = baseURL + "/public/api/addevent";
 
 const clearInput = () => {
     pic_event.value = "";

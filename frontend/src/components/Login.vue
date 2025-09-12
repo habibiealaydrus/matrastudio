@@ -76,7 +76,7 @@ const email = ref([]);
 const password = ref([]);
 const baseURL = axios.defaults.baseURL;
 
-const urlLogin = baseURL + "/api/login";
+const urlLogin = baseURL + "/public/api/login";
 
 const login = async () => {
     await axios
@@ -91,8 +91,8 @@ const login = async () => {
             const id = response.data.data;
 
             if (status == true) {
-                window.localStorage.setItem("id", id);
                 window.localStorage.setItem("token", data);
+                window.localStorage.setItem("id", id);
                 window.localStorage.setItem("authorized", true);
                 window.location.href = "/admin";
             }

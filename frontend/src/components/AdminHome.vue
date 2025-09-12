@@ -63,7 +63,7 @@ import axios from "axios";
 const tokenLogin = localStorage.getItem("token");
 const baseURL = axios.defaults.baseURL;
 
-const urlLogout = baseURL + "/api/logout";
+const urlLogout = baseURL + "/public/api/logout";
 const config = {
     headers: { Authorization: `Bearer ${tokenLogin}` },
 };

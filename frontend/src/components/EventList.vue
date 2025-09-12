@@ -132,7 +132,7 @@ const end_time = ref("");
 
 const event = ref([]);
 const baseURL = axios.defaults.baseURL;
-const urlevent = baseURL + "/api/event";
+const urlevent = baseURL + "/public/api/event";
 const idEvent = ref([]);
 
 const getevent = async () => {
@@ -148,7 +148,7 @@ const previewEvent = (e) => {
 const deleteEvent = async (e) => {
     const idDeleteEvent = e;
     const url = axios.defaults.baseURL;
-    const apideleteEvent = url + "/api/deleteevent/";
+    const apideleteEvent = url + "/public/api/deleteevent/";
     const urlDeleteEvent = apideleteEvent + idDeleteEvent;
 
     const response = await axios.delete(urlDeleteEvent);

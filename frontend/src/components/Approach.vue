@@ -48,117 +48,159 @@
         </div>
     </div>
 
-    <div class="container-fluid p-5 text-start bg-white">
-        <div class="row px-5">
-            <div class="col-lg-6 col-md-12">
-                <div class="row">
-                    <div class="col-3">
-                        <img
-                            src="../assets/img/lightning.png"
-                            style="background-color: transparent"
-                            alt=""
-                            class="w-100"
-                        />
-                    </div>
-                    <div class="col-9">
-                        <div>
+    <!-- perhitungan carbon dan lain2 -->
+
+    <div class="container">
+        <div class="row d-flex justify-content-center px-auto py-2 text-center">
+            <div
+                class="col-md-6 col-sm-12 d-flex py-2 justify-content-md-end justify-content-sm-center"
+            >
+                <table>
+                    <tr>
+                        <td rowspan="2">
+                            <img
+                                src="../assets/img/lightning.png"
+                                style="
+                                    background-color: transparent;
+                                    height: 100px;
+                                "
+                                alt=""
+                                class="w-100"
+                            />
+                        </td>
+                        <td>
                             <p
-                                class="display-6 counter"
+                                class="display-6 counter text-start"
                                 :style="`
-                                                --from: 0;
-                                                --to: ${Energy};
-                                                --time: 4s;
-                                            `"
+                                                            --from: 0;
+                                                            --to: ${Energy};
+                                                            --time: 4s;
+                                                        `"
                             ></p>
-                            <p class="fs-5">Energy Savings (kWh/year)</p>
-                        </div>
-                    </div>
-                </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="fs-5 text-start">
+                                Energy Savings (kWh/year)
+                            </p>
+                        </td>
+                    </tr>
+                </table>
             </div>
-            <div class="col-lg-6 col-md-12">
-                <div class="row">
-                    <div class="col-3">
-                        <img
-                            src="../assets/img/co2.png"
-                            style="background-color: transparent"
-                            alt=""
-                            class="w-100"
-                        />
-                    </div>
-                    <div class="col-9">
-                        <div>
+            <div
+                class="col-md-6 col-sm-12 d-flex py-2 justify-content-md-start justify-content-sm-center"
+            >
+                <table>
+                    <tr>
+                        <td rowspan="2">
+                            <img
+                                src="../assets/img/co2.png"
+                                style="
+                                    background-color: transparent;
+                                    height: 100px;
+                                "
+                                alt=""
+                                class="w-100"
+                            />
+                        </td>
+                        <td>
                             <p
-                                class="display-6 counter"
+                                class="display-6 counter text-start"
                                 :style="`
-                                                --from: 0;
-                                                --to: ${Carbon};
-                                                --time: 4s;
-                                            `"
+                                                            --from: 0;
+                                                            --to: ${Carbon};
+                                                            --time: 4s;
+                                                        `"
                             ></p>
-                            <p class="fs-5 pt-0">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="fs-5 text-start text-nowrap">
                                 Carbon Reduction (tC0<sub
                                     style="background-color: transparent"
                                     >2</sub
                                 >e/year)
                             </p>
-                        </div>
-                    </div>
-                </div>
+                        </td>
+                    </tr>
+                </table>
             </div>
         </div>
-        <div class="row px-5 pt-4">
-            <div class="col-lg-6 col-md-12">
-                <div class="row">
-                    <div class="col-3">
-                        <img
-                            src="../assets/img/water.png"
-                            style="background-color: transparent"
-                            alt=""
-                            class="w-100"
-                        />
-                    </div>
-                    <div class="col-9">
-                        <div>
+        <div class="row d-flex justify-content-center px-auto py-2 text-center">
+            <div
+                class="col-md-6 col-sm-12 d-flex py-2 justify-content-md-end justify-content-sm-center"
+            >
+                <table>
+                    <tr>
+                        <td rowspan="2">
+                            <img
+                                src="../assets/img/water.png"
+                                style="
+                                    background-color: transparent;
+                                    height: 100px;
+                                "
+                                alt=""
+                                class="w-100"
+                            />
+                        </td>
+                        <td>
                             <p
-                                class="display-6 counter"
-                                :style="`
-                                                --from: 0;
-                                                --to: ${Water};
-                                                --time: 4s;
-                                            `"
+                                class="display-6 counter text-start"
+                                :style="`--from: 0;--to: ${Water};--time: 4s;`"
                             ></p>
-                            <p class="fs-5">Water Savings (liters)</p>
-                        </div>
-                    </div>
-                </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="fs-5 text-start">
+                                Water Savings (liters)
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            </p>
+                        </td>
+                    </tr>
+                </table>
             </div>
-            <div class="col-lg-6 col-md-12">
-                <div class="row">
-                    <div class="col-3">
-                        <img
-                            src="../assets/img/Eett.png"
-                            style="background-color: transparent"
-                            alt=""
-                            class="w-100"
-                        />
-                    </div>
-                    <div class="col-9">
-                        <div>
+            <div
+                class="col-md-6 col-sm-12 d-flex py-2 justify-content-md-start justify-content-sm-center"
+            >
+                <table>
+                    <tr>
+                        <td rowspan="2">
+                            <img
+                                src="../assets/img/Eett.png"
+                                style="
+                                    background-color: transparent;
+                                    height: 100px;
+                                "
+                                alt=""
+                                class="w-100"
+                            />
+                        </td>
+                        <td>
                             <p
-                                class="display-6 counter"
+                                class="display-6 counter text-start"
                                 :style="`
-                                                --from: 0;
-                                                --to: ${Embodied};
-                                                --time: 4s;
-                                            `"
+                                                            --from: 0;
+                                                            --to: ${Embodied};
+                                                            --time: 4s;
+                                                        `"
                             ></p>
-                            <p class="fs-5 pt-0">Embodied Energy (GJ)</p>
-                        </div>
-                    </div>
-                </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="fs-5 text-start text-nowrap">
+                                Embodied Energy (GJ)
+                            </p>
+                        </td>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>
+    <!-- perhitungan carbon dan lain2 -->
 </template>
 
 <script setup>

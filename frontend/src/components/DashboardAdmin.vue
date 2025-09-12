@@ -126,7 +126,7 @@ import { ref, onMounted } from "vue";
 
 const inquiry = ref([]);
 const baseURL = axios.defaults.baseURL;
-const urlinquiry = baseURL + "/api/inqurymessagelimited";
+const urlinquiry = baseURL + "/public/api/inqurymessagelimited";
 
 const getinquiry = async () => {
     try {
@@ -136,7 +136,7 @@ const getinquiry = async () => {
 };
 
 const mesagges = ref([]);
-const urlmessages = baseURL + "/api/allmessage";
+const urlmessages = baseURL + "/public/api/allmessage";
 
 const getmessages = async () => {
     const response = await axios.get(urlmessages);
@@ -145,7 +145,7 @@ const getmessages = async () => {
 };
 
 const blog = ref([]);
-const urlblog = baseURL + "/api/allblog";
+const urlblog = baseURL + "/public/api/allblog";
 
 const getblog = async () => {
     const response = await axios.get(urlblog);
@@ -154,7 +154,7 @@ const getblog = async () => {
 };
 
 const news = ref([]);
-const urlnews = baseURL + "/api/newsall";
+const urlnews = baseURL + "/public/api/newsall";
 
 const getnews = async () => {
     const response = await axios.get(urlnews);
@@ -163,7 +163,7 @@ const getnews = async () => {
 };
 
 const project = ref([]);
-const urlproject = baseURL + "/api/client";
+const urlproject = baseURL + "/public/api/client";
 
 const getproject = async () => {
     const response = await axios.get(urlproject);
@@ -172,7 +172,7 @@ const getproject = async () => {
 };
 
 const event = ref([]);
-const urlevent = baseURL + "/api/event";
+const urlevent = baseURL + "/public/api/event";
 
 const getevent = async () => {
     const response = await axios.get(urlevent);

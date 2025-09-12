@@ -5,16 +5,22 @@
         <h1 class="h1 text-center pt-3">FEATURE PROJECTS</h1>
         <div class="container-fluid">
             <div class="row px-5">
-                <div v-for="project in feature" class="col-md-4 mx-auto">
-                    <a :href="`/work/detail/${project.id}`" class="nav-link">
+                <div
+                    v-for="project in feature"
+                    class="col-md-4 col-sm-12 mx-auto"
+                >
+                    <a
+                        :href="url + `work/detail/${project.id}`"
+                        class="nav-link d-flex flex-column"
+                    >
                         <img
-                            class="p-2"
-                            style="width: 30vw; height: 20vw"
+                            class="img-responsive ratio ratio-16x9"
+                            style="min-height: 250px"
                             :src="
                                 baseURL +
-                                `/storage/projectpicture/${project.main_pic}`
+                                `/public/storage/projectpicture/${project.main_pic}`
                             "
-                            alt=""
+                            alt="matrastudio"
                         />
                     </a>
                     <h3 class="text-center px-1">{{ project.project_name }}</h3>
@@ -34,7 +40,8 @@ import axios from "axios";
 
 const feature = ref([]);
 const baseURL = axios.defaults.baseURL;
-const urlfeature = baseURL + "/api/limitedclient";
+const urlfeature = baseURL + "/public/api/limitedclient";
+const url = window.location.href;
 
 const getfeatureproject = async () => {
     try {

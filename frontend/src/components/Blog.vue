@@ -1,15 +1,15 @@
 <template>
     <div class="container-fluid">
         <div class="row bg-white">
-            <div class="col-md-4" v-for="blog in blogs">
-                <div class="news px-5">
+            <div class="col-md-4 " v-for="blog in blogs">
+                <div class="news px-5 shadow-sm p-3 mb-5 bg-body-tertiary rounde">
                     <a
                         :href="`/blog/detail/${blog.id}`"
                         class="link-offset-2 link-underline link-underline-opacity-0"
                         style="color: black"
                     >
                         <img
-                            :src="baseURL + `/storage/blog/${blog.main_img}`"
+                            :src="baseURL + `/public/storage/blog/${blog.main_img}`"
                             alt=""
                             class="img-fluid"
                         />
@@ -29,7 +29,7 @@ import { ref, onMounted } from "vue";
 
 const blogs = ref([]);
 const baseURL = axios.defaults.baseURL;
-const urlblog = baseURL + "/api/allblog";
+const urlblog = baseURL + "/public/api/allblog";
 
 const getblogs = async () => {
     try {

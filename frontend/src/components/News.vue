@@ -1,5 +1,5 @@
 <template>
-    <div class="bodynews">
+    <div class="bg-light py-2">
         <div class="container-fluid">
             <div class="row d-flex flex-row justify-content-center">
                 <div
@@ -20,7 +20,7 @@
                             <img
                                 :src="
                                     baseURL +
-                                    `/storage/news/logo_news/${item.logo_news}`
+                                    `/public/storage/news/logo_news/${item.logo_news}`
                                 "
                                 alt=""
                                 class="w-100"
@@ -45,7 +45,7 @@ import { ref, onMounted } from "vue";
 
 const news = ref([]);
 const baseURL = axios.defaults.baseURL;
-const urlnews = baseURL + "/api/newsall";
+const urlnews = baseURL + "/public/api/newsall";
 
 const getnews = async () => {
     try {

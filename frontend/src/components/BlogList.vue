@@ -119,7 +119,7 @@ import FormAddBlog from "../components/FormAddBlog.vue";
 
 const blogs = ref([]);
 const baseURL = axios.defaults.baseURL;
-const urlblog = baseURL + "/api/allblog";
+const urlblog = baseURL + "/public/api/allblog";
 
 const getblog = async () => {
     const response = await axios.get(urlblog);
@@ -135,7 +135,7 @@ const previewblog = (e) => {
 const deleteBlog = async (e) => {
     const idDeleteBlog = e;
     const url = axios.defaults.baseURL;
-    const apideleteBlog = url + "/api/deleteblog/";
+    const apideleteBlog = url + "/public/api/deleteblog/";
     const urlDeleteBlog = apideleteBlog + idDeleteBlog;
 
     const response = await axios.delete(urlDeleteBlog);

@@ -43,7 +43,7 @@
                                         class="w-50"
                                         :src="
                                             baseURL +
-                                            `/storage/projectclients/${client.projectclient_img}`
+                                            `/public/storage/projectclients/${client.projectclient_img}`
                                         "
                                     />
                                 </td>
@@ -99,11 +99,18 @@
                     </div>
                     <div class="modal-body">
                         <div class="modal-body h-100">
-                            <div>
-                                {{ idImage.projectclient_name }}
+                            <div class="d-flex justify-content-center">
+                                Nama Client: {{ idImage.projectclient_name }}
                             </div>
-                            <div>
-                                <img frameborder="0" class="w-100" />
+                            <div class="d-flex justify-content-center">
+                                <img
+                                    :src="
+                                        baseURL +
+                                        `/public/storage/projectclients/${idImage.projectclient_img}`
+                                    "
+                                    frameborder="0"
+                                    class="img-thumbnail"
+                                />
                             </div>
                         </div>
                     </div>
@@ -120,7 +127,7 @@ import FormAddProjectclient from "../components/FormAddProjectclient.vue";
 
 const clients = ref([]);
 const baseURL = axios.defaults.baseURL;
-const urlclient = baseURL + "/api/allimageclient";
+const urlclient = baseURL + "/public/api/allimageclient";
 
 const getclient = async () => {
     const response = await axios.get(urlclient);
@@ -129,7 +136,7 @@ const getclient = async () => {
 };
 
 const idImage = ref([]);
-const urlidetailclient = baseURL + "/api/allimageclientid/";
+const urlidetailclient = baseURL + "/public/api/allimageclientid/";
 
 const previewimageclient = async (e) => {
     const id = e;
@@ -140,7 +147,7 @@ const previewimageclient = async (e) => {
 const deleteclient = async (e) => {
     const idDeleteclient = e;
 
-    const apideleteclient = baseURL + "/api/deleteimageclient/";
+    const apideleteclient = baseURL + "/public/api/deleteimageclient/";
     const urlDeleteclient = apideleteclient + idDeleteclient;
 
     const response = await axios.delete(urlDeleteclient);

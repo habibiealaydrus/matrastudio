@@ -30,7 +30,7 @@
             </div>
             <TransitionGroup name="slide" tag="a" class="row">
                 <a
-                    :href="`/work/detail/${project.id}`"
+                    :href="currentpage + `/detail/${project.id}`"
                     v-for="project in feature"
                     class="col-md-4 project px-2 pt-0"
                     :key="project"
@@ -39,7 +39,7 @@
                         class="p-2 w-100"
                         :src="
                             baseURL +
-                            `/storage/projectpicture/${project.grid_pic}`
+                            `/public/storage/projectpicture/${project.grid_pic}`
                         "
                         alt=""
                     />
@@ -61,9 +61,10 @@ import { ref, onMounted } from "vue";
 const feature = ref([]);
 const type = ref([]);
 
-const baseURL = axios.defaults.baseURL;
-const urlfeature = baseURL + "/api/client";
+const currentpage = window.location.href;
 
+const baseURL = axios.defaults.baseURL;
+const urlfeature = baseURL + "/public/api/client";
 const getfeatureproject = async (e) => {
     try {
         const response = await axios.get(urlfeature);
@@ -72,7 +73,7 @@ const getfeatureproject = async (e) => {
 };
 const filter = async (e) => {
     const type = e;
-    const urlfilter = baseURL + "/api/filterclient/" + type;
+    const urlfilter = baseURL + "/public/api/filterclient/" + type;
     //console.log(urlfilter);
     const response = await axios.get(urlfilter);
     //console.log(response.data.data);

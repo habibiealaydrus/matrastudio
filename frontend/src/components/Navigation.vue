@@ -27,7 +27,12 @@
             >
                 <ul class="navbar-nav mb-0 mb-lg-0">
                     <li class="nav-item">
-                        <RouterLink class="nav-link" aria-current="page" to="/">
+                        <RouterLink
+                            class="nav-link"
+                            aria-current="page"
+                            to="/"
+                            @click="closeMenu"
+                        >
                             Home</RouterLink
                         >
                     </li>
@@ -36,12 +41,17 @@
                             class="nav-link"
                             aria-current="page"
                             to="/work"
+                            @click="closeMenu"
+                            id="buttonclose"
                         >
                             Work</RouterLink
                         >
                     </li>
                     <li class="nav-item">
-                        <RouterLink class="nav-link" to="/about"
+                        <RouterLink
+                            class="nav-link"
+                            to="/about"
+                            @click="closeMenu"
                             >About</RouterLink
                         >
                     </li>
@@ -73,17 +83,27 @@
                                 id="sublink"
                             >
                                 <li>
-                                    <RouterLink class="nav-link" to="/news"
+                                    <RouterLink
+                                        class="nav-link"
+                                        to="/news"
+                                        @click="closeMenu"
                                         >News</RouterLink
                                     >
                                 </li>
                                 <li>
-                                    <RouterLink class="nav-link" to="/blogs"
+                                    <RouterLink
+                                        class="nav-link"
+                                        to="/blogs"
+                                        @click="closeMenu"
                                         >Blog</RouterLink
                                     >
                                 </li>
                                 <li>
-                                    <RouterLink class="nav-link" to="/events"
+                                    <RouterLink
+                                        onclick=""
+                                        class="nav-link"
+                                        to="/events"
+                                        @click="closeMenu"
                                         >Event</RouterLink
                                     >
                                 </li>
@@ -91,7 +111,10 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <RouterLink class="nav-link" to="/contact"
+                        <RouterLink
+                            class="nav-link"
+                            to="/contact"
+                            @click="closeMenu"
                             >Contact</RouterLink
                         >
                     </li>
@@ -127,6 +150,17 @@
                                 />
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a
+                                class="nav-link p-2"
+                                href="https://www.linkedin.com/company/matrastudio/"
+                                target="_blank"
+                            >
+                                <font-awesome-icon
+                                    :icon="['fab', 'linkedin']"
+                                />
+                            </a>
+                        </li>
                     </div>
                 </ul>
             </div>
@@ -138,6 +172,12 @@
 import { ref, onMounted } from "vue";
 
 const buttonNav = ref(null);
+const buttonClose = ref(null);
+const windowWidth = ref(window.innerWidth);
+
+const handleResize = () => {
+    windowWidth.value = window.innerWidth;
+};
 
 const NavButton = () => {
     const eCollapse = document.getElementById("navbarSupportedContent");
@@ -148,6 +188,22 @@ const NavButton = () => {
     eCollapse.classList.toggle("mobilemenu");
     sublink.classList.toggle("sublinkmobile");
 };
+
+const closeMenu = () => {
+    if (windowWidth.value < 991) {
+        const eCollapse = document.getElementById("navbarSupportedContent");
+        const sublink = document.getElementById("sublink");
+        eCollapse.classList.toggle("show");
+        eCollapse.classList.toggle("text-center");
+        eCollapse.classList.toggle("mobilemenu");
+        eCollapse.classList.toggle("justify-content-center");
+        eCollapse.classList.toggle("justify-content-end");
+        sublink.classList.toggle("sublinkmobile");
+    }
+};
+onMounted(() => {
+    window.addEventListener("resize", handleResize);
+});
 </script>
 
 <style lang="scss" scoped></style>
