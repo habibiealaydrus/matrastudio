@@ -24,9 +24,9 @@
         "vue3-toastify": "^0.2.3"
     },
     "devDependencies": {
-        "@vitejs/plugin-vue": "^5.0.5",
-        "@vitejs/plugin-vue-jsx": "^4.0.0",
+        "@vitejs/plugin-vue": "^6.0.8",
+        "@vitejs/plugin-vue-jsx": "^5.1.6",
         "esbuild": "^0.28.1",
-        "vite": "^8.0.16"
+        "vite": "^6.4.3"
     }
 }
