@@ -16,6 +16,10 @@ See [Vite Configuration Reference](https://vitejs.dev/config/).
 npm install
 ```
 
+### Backend API URL
+
+Set `VITE_API_BASE_URL` in `frontend/.env.local` to the Laravel origin. The default is `http://127.0.0.1:8000` for `php artisan serve`. API routes use `/api`, and public files use `/storage`.
+
 ### Compile and Hot-Reload for Development
 
 ```sh

@@ -1,46 +1,28 @@
 <template>
-    <div
-        class="container-fluid bg-light bg-gradient justify-content-center text-center bg-white"
-    >
-        <h1 class="h1 text-center pt-3">FEATURE PROJECTS</h1>
-        <div class="container-fluid">
-            <div class="row px-5">
-                <div
-                    v-for="project in feature"
-                    class="col-md-4 col-sm-12 mx-auto"
-                >
-                    <a
-                        :href="url + `work/detail/${project.id}`"
-                        class="nav-link d-flex flex-column"
-                    >
-                        <img
-                            class="img-responsive ratio ratio-16x9"
-                            style="min-height: 250px"
-                            :src="
-                                baseURL +
-                                `/public/storage/projectpicture/${project.main_pic}`
-                            "
-                            alt="matrastudio"
-                        />
-                    </a>
-                    <h3 class="text-center px-1">{{ project.project_name }}</h3>
-                    <!-- <div
-                        class="text-start"
-                        v-html="project.article.substring(0, 120)"
-                    ></div> -->
-                </div>
-            </div>
+    <section id="featured-projects" class="section-pad feature-section">
+        <header class="section-heading">
+            <p class="eyebrow">A few things we’ve made</p>
+            <h2>Selected projects</h2>
+            <p>Thoughtful responses to the people, context, and possibilities of each place.</p>
+        </header>
+        <div class="featured-grid">
+            <a v-for="project in feature" :key="project.id" :href="`/work/detail/${projectSlug(project.project_name)}`" class="featured-card">
+                <img :src="`${baseURL}/storage/projectpicture/${project.main_pic || project.grid_pic}`" :alt="project.project_name" loading="lazy" />
+                <div class="featured-card-copy"><span>Featured project</span><h3>{{ project.project_name }}</h3></div>
+            </a>
         </div>
-    </div>
+        <div class="text-center mt-4"><RouterLink class="button-primary" to="/work">View all work <span aria-hidden="true">↗</span></RouterLink></div>
+    </section>
 </template>
 
 <script setup>
 import { ref, onMounted } from "vue";
 import axios from "axios";
+import { projectSlug } from "../utils/projectSlug";
 
 const feature = ref([]);
 const baseURL = axios.defaults.baseURL;
-const urlfeature = baseURL + "/public/api/limitedclient";
+const urlfeature = baseURL + "/api/limitedclient";
 const url = window.location.href;
 
 const getfeatureproject = async () => {

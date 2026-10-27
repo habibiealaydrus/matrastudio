@@ -1,209 +1,40 @@
 <template>
-    <nav class="navbar navbar-expand-lg bg-white">
-        <div class="container-fluid">
-            <div class="col-6">
-                <img
-                    src="../assets/img/logo-matra-studio.png"
-                    class="img-fluid float-start"
-                    alt=""
-                />
-            </div>
-            <button
-                class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-                @click="NavButton"
-                id="buttonclose"
-            >
-                <span class="navbar-toggler-icon"></span>
+    <nav class="site-nav" aria-label="Navigasi utama">
+        <div class="nav-inner">
+            <RouterLink class="brand-lockup" to="/" aria-label="Matra Studio, beranda" @click="closeMenu">
+                <img src="../assets/img/logo-matra-studio.png" alt="Matra Studio" />
+            </RouterLink>
+
+            <button class="nav-toggle" type="button" :aria-expanded="menuOpen" aria-controls="primary-navigation" @click="menuOpen = !menuOpen">
+                <span class="nav-toggle-icon" aria-hidden="true">{{ menuOpen ? "×" : "☰" }}</span>
+                <span>{{ menuOpen ? "Close" : "Menu" }}</span>
             </button>
-            <div
-                class="collapse navbar-collapse nav justify-content-end"
-                id="navbarSupportedContent"
-            >
-                <ul class="navbar-nav mb-0 mb-lg-0">
-                    <li class="nav-item">
-                        <RouterLink
-                            class="nav-link"
-                            aria-current="page"
-                            to="/"
-                            @click="closeMenu"
-                        >
-                            Home</RouterLink
-                        >
-                    </li>
-                    <li class="nav-item">
-                        <RouterLink
-                            class="nav-link"
-                            aria-current="page"
-                            to="/work"
-                            @click="closeMenu"
-                            id="buttonclose"
-                        >
-                            Work</RouterLink
-                        >
-                    </li>
-                    <li class="nav-item">
-                        <RouterLink
-                            class="nav-link"
-                            to="/about"
-                            @click="closeMenu"
-                            >About</RouterLink
-                        >
-                    </li>
-                    <!-- <li class="nav-item">
-                        <RouterLink class="nav-link" to="/process"
-                            >Process</RouterLink
-                        >
-                    </li> -->
-                    <li class="updates nav-item dropdown">
-                        <a
-                            class="nav-link dropdown-toggle"
-                            href="#"
-                            role="button"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false"
-                        >
-                            Updates
-                        </a>
-                        <ul
-                            class="dropdown-menu bg-white"
-                            style="
-                                margin-top: 0dvh;
-                                border: none;
-                                background-color: transparent;
-                            "
-                        >
-                            <div
-                                class="d-flex flex-row justify-content-center gap-2"
-                                id="sublink"
-                            >
-                                <li>
-                                    <RouterLink
-                                        class="nav-link"
-                                        to="/news"
-                                        @click="closeMenu"
-                                        >News</RouterLink
-                                    >
-                                </li>
-                                <li>
-                                    <RouterLink
-                                        class="nav-link"
-                                        to="/blogs"
-                                        @click="closeMenu"
-                                        >Blog</RouterLink
-                                    >
-                                </li>
-                                <li>
-                                    <RouterLink
-                                        onclick=""
-                                        class="nav-link"
-                                        to="/events"
-                                        @click="closeMenu"
-                                        >Event</RouterLink
-                                    >
-                                </li>
-                            </div>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <RouterLink
-                            class="nav-link"
-                            to="/contact"
-                            @click="closeMenu"
-                            >Contact</RouterLink
-                        >
-                    </li>
-                    <div class="d-flex flex-row mx-auto">
-                        <li class="nav-item">
-                            <a
-                                class="nav-link p-2"
-                                href="https://www.instagram.com/matra.studio"
-                                target="_blank"
-                            >
-                                <font-awesome-icon
-                                    :icon="['fab', 'instagram']"
-                                />
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a
-                                class="nav-link p-2"
-                                href="https://www.youtube.com/@matraarchitecturestudio1353"
-                                target="_blank"
-                            >
-                                <font-awesome-icon :icon="['fab', 'youtube']" />
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a
-                                class="nav-link p-2"
-                                href="https://www.facebook.com/matrastudio/?locale=id_ID"
-                                target="_blank"
-                            >
-                                <font-awesome-icon
-                                    :icon="['fab', 'facebook']"
-                                />
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a
-                                class="nav-link p-2"
-                                href="https://www.linkedin.com/company/matrastudio/"
-                                target="_blank"
-                            >
-                                <font-awesome-icon
-                                    :icon="['fab', 'linkedin']"
-                                />
-                            </a>
-                        </li>
+
+            <div id="primary-navigation" class="nav-links" :class="{ 'is-open': menuOpen }">
+                <RouterLink to="/" @click="closeMenu">Home</RouterLink>
+                <RouterLink to="/work" @click="closeMenu">Work</RouterLink>
+                <RouterLink to="/about" @click="closeMenu">About</RouterLink>
+                <div class="nav-updates">
+                    <button type="button" :aria-expanded="updatesOpen" @click="updatesOpen = !updatesOpen">Journal <span class="nav-chevron" aria-hidden="true"></span></button>
+                    <div v-if="updatesOpen" class="nav-submenu">
+                        <RouterLink to="/news" @click="closeMenu">News</RouterLink>
+                        <RouterLink to="/blogs" @click="closeMenu">Stories</RouterLink>
+                        <RouterLink to="/events" @click="closeMenu">Events</RouterLink>
                     </div>
-                </ul>
+                </div>
+                <RouterLink to="/contact" class="nav-cta" @click="closeMenu">Start a project <span aria-hidden="true">↗</span></RouterLink>
             </div>
         </div>
     </nav>
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref } from "vue";
 
-const buttonNav = ref(null);
-const buttonClose = ref(null);
-const windowWidth = ref(window.innerWidth);
-
-const handleResize = () => {
-    windowWidth.value = window.innerWidth;
-};
-
-const NavButton = () => {
-    const eCollapse = document.getElementById("navbarSupportedContent");
-    const sublink = document.getElementById("sublink");
-    eCollapse.classList.toggle("justify-content-end");
-    eCollapse.classList.toggle("justify-content-center");
-    eCollapse.classList.toggle("text-center");
-    eCollapse.classList.toggle("mobilemenu");
-    sublink.classList.toggle("sublinkmobile");
-};
-
+const menuOpen = ref(false);
+const updatesOpen = ref(false);
 const closeMenu = () => {
-    if (windowWidth.value < 991) {
-        const eCollapse = document.getElementById("navbarSupportedContent");
-        const sublink = document.getElementById("sublink");
-        eCollapse.classList.toggle("show");
-        eCollapse.classList.toggle("text-center");
-        eCollapse.classList.toggle("mobilemenu");
-        eCollapse.classList.toggle("justify-content-center");
-        eCollapse.classList.toggle("justify-content-end");
-        sublink.classList.toggle("sublinkmobile");
-    }
+    menuOpen.value = false;
+    updatesOpen.value = false;
 };
-onMounted(() => {
-    window.addEventListener("resize", handleResize);
-});
 </script>
-
-<style lang="scss" scoped></style>

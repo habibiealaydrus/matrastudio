@@ -377,7 +377,7 @@
                                             <br />
 
                                             <a
-                                                :href="`http://127.0.0.1:8000/storage/projectfile/${inquirydetail.project_file}`"
+                                                :href="`${baseURL}/storage/projectfile/${inquirydetail.project_file}`"
                                                 target="_blank"
                                                 >Data upload</a
                                             >
@@ -399,7 +399,7 @@ import { ref, onMounted } from "vue";
 
 const messages = ref([]);
 const baseURL = axios.defaults.baseURL;
-const urlmessages = baseURL + "/public/api/allmessage";
+const urlmessages = baseURL + "/api/allmessage";
 const messagedetail = ref([]);
 const inquiries = ref([]);
 const inquirydetail = ref([]);
@@ -418,7 +418,7 @@ const getdetailmesagge = async (e) => {
 };
 
 const getinquiries = async () => {
-    const urlinquiries = baseURL + "/public/api/inquiries";
+    const urlinquiries = baseURL + "/api/inquiries";
     const response = await axios.get(urlinquiries);
 
     inquiries.value = response.data.data;

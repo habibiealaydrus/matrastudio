@@ -1,7 +1,7 @@
 <template>
     <div class="container-fluid bg-white">
-        <div class="row p-5">
-            <div class="col-md-6 pb-3">
+        <div class="contact-page">
+            <div class="contact-copy">
                 <h1 class="h1">
                     Let's create something extraordinary together!
                 </h1>
@@ -333,7 +333,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="contact-card">
                 <img src="../assets/img/square.gif" alt="" class="img-fluid" />
             </div>
         </div>

@@ -43,7 +43,7 @@
                                         class="w-50"
                                         :src="
                                             baseURL +
-                                            `/public/storage/projectclients/${client.projectclient_img}`
+                                            `/storage/projectclients/${client.projectclient_img}`
                                         "
                                     />
                                 </td>
@@ -106,7 +106,7 @@
                                 <img
                                     :src="
                                         baseURL +
-                                        `/public/storage/projectclients/${idImage.projectclient_img}`
+                                        `/storage/projectclients/${idImage.projectclient_img}`
                                     "
                                     frameborder="0"
                                     class="img-thumbnail"
@@ -127,7 +127,7 @@ import FormAddProjectclient from "../components/FormAddProjectclient.vue";
 
 const clients = ref([]);
 const baseURL = axios.defaults.baseURL;
-const urlclient = baseURL + "/public/api/allimageclient";
+const urlclient = baseURL + "/api/allimageclient";
 
 const getclient = async () => {
     const response = await axios.get(urlclient);
@@ -136,7 +136,7 @@ const getclient = async () => {
 };
 
 const idImage = ref([]);
-const urlidetailclient = baseURL + "/public/api/allimageclientid/";
+const urlidetailclient = baseURL + "/api/allimageclientid/";
 
 const previewimageclient = async (e) => {
     const id = e;
@@ -147,7 +147,7 @@ const previewimageclient = async (e) => {
 const deleteclient = async (e) => {
     const idDeleteclient = e;
 
-    const apideleteclient = baseURL + "/public/api/deleteimageclient/";
+    const apideleteclient = baseURL + "/api/deleteimageclient/";
     const urlDeleteclient = apideleteclient + idDeleteclient;
 
     const response = await axios.delete(urlDeleteclient);

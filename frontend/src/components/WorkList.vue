@@ -342,7 +342,7 @@
                                         alt=""
                                         :src="
                                             baseURL +
-                                            `/public/storage/projectpicture/${detailproject.pic1}`
+                                            `/storage/projectpicture/${detailproject.pic1}`
                                         "
                                     />
                                     <img
@@ -350,7 +350,7 @@
                                         alt=""
                                         :src="
                                             baseURL +
-                                            `/public/storage/projectpicture/${detailproject.pic2}`
+                                            `/storage/projectpicture/${detailproject.pic2}`
                                         "
                                     />
                                     <img
@@ -358,7 +358,7 @@
                                         alt=""
                                         :src="
                                             baseURL +
-                                            `/public/storage/projectpicture/${detailproject.pic3}`
+                                            `/storage/projectpicture/${detailproject.pic3}`
                                         "
                                     />
                                     <img
@@ -366,7 +366,7 @@
                                         alt=""
                                         :src="
                                             baseURL +
-                                            `/public/storage/projectpicture/${detailproject.pic4}`
+                                            `/storage/projectpicture/${detailproject.pic4}`
                                         "
                                     />
                                     <img
@@ -374,7 +374,7 @@
                                         alt=""
                                         :src="
                                             baseURL +
-                                            `/public/storage/projectpicture/${detailproject.pic5}`
+                                            `/storage/projectpicture/${detailproject.pic5}`
                                         "
                                     />
                                     <img
@@ -382,7 +382,7 @@
                                         alt=""
                                         :src="
                                             baseURL +
-                                            `/public/storage/projectpicture/${detailproject.pic6}`
+                                            `/storage/projectpicture/${detailproject.pic6}`
                                         "
                                     />
                                 </div>
@@ -421,7 +421,7 @@ const notify = (message) => {
 const project = ref([]);
 const baseURL = axios.defaults.baseURL;
 
-const urlproject = baseURL + "/public/api/client";
+const urlproject = baseURL + "/api/client";
 
 const type_project = ref([]);
 
@@ -445,7 +445,7 @@ const detailproject = ref([]);
 
 const getdetailproject = async (e) => {
     const idDetail = e;
-    const urlDetailProject = baseURL + "/public/api/clientdetail/" + idDetail;
+    const urlDetailProject = baseURL + "/api/clientdetail/" + idDetail;
     const response = await axios.get(urlDetailProject);
     detailproject.value = response.data.data;
     //type_project.value = response.data.data.type_project;

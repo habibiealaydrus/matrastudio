@@ -76,7 +76,7 @@ const email = ref([]);
 const password = ref([]);
 const baseURL = axios.defaults.baseURL;
 
-const urlLogin = baseURL + "/public/api/login";
+const urlLogin = baseURL + "/api/login";
 
 const login = async () => {
     await axios

@@ -94,7 +94,7 @@ const password = ref("");
 
 const baseURL = axios.defaults.baseURL;
 
-const urladduser = baseURL + "/public/api/register";
+const urladduser = baseURL + "/api/register";
 
 const clearInput = () => {
     name.value = "";

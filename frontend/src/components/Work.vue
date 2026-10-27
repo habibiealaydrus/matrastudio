@@ -1,102 +1,84 @@
 <template>
-    <div class="container-fluid pb-3 bg-white">
-        <div class="px-3">
-            <p
-                class="text-uppercase fs-1 fw-bold my-0 py-0"
-                @click="getfeatureproject()"
-            >
-                Projects
-            </p>
-            <div class="d-flex flex-row flex-wrap my-0 py-0 ms-1">
-                <div
-                    @click="filter('Architecture')"
-                    class="text-uppercase fs-3 me-5"
-                >
-                    Architecture
-                </div>
-
-                <div
-                    @click="filter('Sustainability')"
-                    class="text-uppercase fs-3 me-5"
-                >
-                    Sustainability
-                </div>
-                <div
-                    @click="filter('Installation')"
-                    class="text-uppercase fs-3 me-5"
-                >
-                    Instalation
+    <section class="page-work">
+        <header class="work-hero">
+            <div class="work-hero-top">
+                <p class="eyebrow">Matra Studio · Selected work</p>
+                <span>Portfolio / {{ String(allProjects.length).padStart(2, "0") }} projects</span>
+            </div>
+            <div class="work-hero-main">
+                <h1>Work shaped<br /><em>by place.</em></h1>
+                <div class="work-hero-copy">
+                    <p>Ideas grounded in context. Explore spaces and systems designed with care for people, culture, and the environment.</p>
+                    <a href="#project-list" class="work-explore-link">Explore selected work <span aria-hidden="true">↓</span></a>
                 </div>
             </div>
-            <TransitionGroup name="slide" tag="a" class="row">
-                <a
-                    :href="currentpage + `/detail/${project.id}`"
-                    v-for="project in feature"
-                    class="col-md-4 project px-2 pt-0"
-                    :key="project"
-                >
-                    <img
-                        class="p-2 w-100"
-                        :src="
-                            baseURL +
-                            `/public/storage/projectpicture/${project.grid_pic}`
-                        "
-                        alt=""
-                    />
-                    <div class="overlay">
-                        <div class="text text-uppercase fw-bold">
-                            {{ project.project_name }}
-                        </div>
-                    </div>
-                </a>
-            </TransitionGroup>
+            <div class="work-hero-bottom"><span>Architecture</span><i></i><span>Sustainability</span><i></i><span>Installation</span></div>
+        </header>
+
+        <div id="project-list" class="work-filter-bar">
+            <span class="work-filter-label">Explore by discipline</span>
+            <div class="work-filters" aria-label="Filter projects">
+            <button v-for="category in categories" :key="category.value" type="button" class="work-filter" :class="{ 'is-active': activeCategory === category.value }" @click="chooseCategory(category.value)">
+                {{ category.label }} <span>{{ category.count }}</span>
+            </button>
+            </div>
         </div>
-    </div>
+
+        <p v-if="loading" class="work-status" role="status">Loading selected projects…</p>
+        <div v-else-if="feature.length" class="work-grid">
+            <a v-for="(project, index) in feature" :key="project.id" :href="`/work/detail/${projectSlug(project.project_name)}`" class="work-card" :class="{ 'is-featured': activeCategory === 'all' && index === 0 }">
+                <div class="work-card-image">
+                    <img :src="`${baseURL}/storage/projectpicture/${project.grid_pic || project.main_pic}`" :alt="project.project_name" :loading="index < 2 ? 'eager' : 'lazy'" />
+                    <span class="work-card-category">{{ project.type_project || "Project" }}</span>
+                    <span class="work-card-arrow" aria-hidden="true">↗</span>
+                </div>
+                <div class="work-card-copy">
+                    <div><span class="work-card-index">{{ String(index + 1).padStart(2, "0") }} / {{ String(feature.length).padStart(2, "0") }}</span><h2>{{ project.project_name }}</h2></div>
+                    <span class="work-card-meta">{{ [project.location, project.year].filter(Boolean).join(" · ") }}</span>
+                </div>
+            </a>
+        </div>
+        <div v-else class="work-empty">
+            <h2>No projects in this category yet.</h2>
+            <button type="button" class="work-filter is-active" @click="chooseCategory('all')">View all projects</button>
+        </div>
+    </section>
 </template>
 
 <script setup>
 import axios from "axios";
-import { ref, onMounted } from "vue";
+import { computed, onMounted, ref } from "vue";
+import { projectSlug } from "../utils/projectSlug";
 
-const feature = ref([]);
-const type = ref([]);
-
-const currentpage = window.location.href;
-
+const allProjects = ref([]);
+const loading = ref(true);
+const activeCategory = ref("all");
 const baseURL = axios.defaults.baseURL;
-const urlfeature = baseURL + "/public/api/client";
-const getfeatureproject = async (e) => {
+const categories = computed(() => [
+    { label: "All work", value: "all", count: allProjects.value.length },
+    ...["Architecture", "Sustainability", "Installation"].map((value) => ({
+        label: value,
+        value,
+        count: allProjects.value.filter((project) => project.type_project === value).length,
+    })),
+]);
+const feature = computed(() => activeCategory.value === "all"
+    ? allProjects.value
+    : allProjects.value.filter((project) => project.type_project === activeCategory.value));
+
+const loadProjects = async () => {
+    loading.value = true;
     try {
-        const response = await axios.get(urlfeature);
-        feature.value = response.data.data;
-    } catch (error) {}
+        const response = await axios.get(`${baseURL}/api/client`);
+        allProjects.value = response.data.data || [];
+    } catch (error) {
+        allProjects.value = [];
+        console.error("Unable to load projects", error);
+    } finally {
+        loading.value = false;
+    }
 };
-const filter = async (e) => {
-    const type = e;
-    const urlfilter = baseURL + "/public/api/filterclient/" + type;
-    //console.log(urlfilter);
-    const response = await axios.get(urlfilter);
-    //console.log(response.data.data);
-    feature.value = response.data.data;
-};
-onMounted(() => {
-    getfeatureproject();
-});
+
+const chooseCategory = (category) => { activeCategory.value = category; };
+onMounted(() => loadProjects());
 </script>
-
-<style>
-.slide-enter-from,
-.slide-leave-to {
-    opacity: 0;
-    transform: translateX(100%);
-}
-
-.slide-move,
-.slide-enter-active,
-.slide-leave-active {
-    transition: all 0.5s ease-out;
-}
-.slide-leave-active {
-    position: absolute;
-}
-</style>

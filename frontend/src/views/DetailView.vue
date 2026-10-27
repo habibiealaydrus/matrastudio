@@ -1,10 +1,10 @@
 <script setup>
-import Detail from "../components/Detail.vue";
+import ProjectDetail from "../components/ProjectDetail.vue";
 import Footer from "../components/Footer.vue";
 </script>
 <template>
     <div>
-        <Detail />
+        <ProjectDetail />
         <Footer />
     </div>
 </template>

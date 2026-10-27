@@ -114,7 +114,7 @@ import FormAddUser from "../components/FormAddUser.vue";
 const users = ref([]);
 const baseURL = axios.defaults.baseURL;
 
-const urlusers = baseURL + "/public/api/alluser";
+const urlusers = baseURL + "/api/alluser";
 const detailuser = ref([]);
 
 const getusers = async () => {
@@ -123,7 +123,7 @@ const getusers = async () => {
     users.value = response.data.data;
 };
 
-const urldetailuser = baseURL + "/public/api/detailuser/";
+const urldetailuser = baseURL + "/api/detailuser/";
 
 const previewuser = async (e) => {
     const iduser = e;

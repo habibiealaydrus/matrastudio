@@ -1,5 +1,5 @@
 <template>
-    <Login />
+    <main class="login-shell"><Login /></main>
     <Footer />
 </template>
 

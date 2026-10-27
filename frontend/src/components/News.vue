@@ -1,51 +1,28 @@
 <template>
-    <div class="bg-light py-2">
-        <div class="container-fluid">
-            <div class="row d-flex flex-row justify-content-center">
-                <div
-                    class="col-md-4 px-1"
-                    @mouseenter="hoverineffect"
-                    @mouseout="hoveroutffect"
-                    v-for="item in news"
-                >
-                    <a
-                        :href="`/news/detail/${item.id}`"
-                        style="text-decoration: none"
-                    >
-                        <div
-                            class="d-flex justify-content-center headernews"
-                            style="height: 300px"
-                            id="headernews"
-                        >
-                            <img
-                                :src="
-                                    baseURL +
-                                    `/public/storage/news/logo_news/${item.logo_news}`
-                                "
-                                alt=""
-                                class="w-100"
-                            />
-                        </div>
-                        <div class="newscontent" id="newscontent">
-                            <p>{{ item.headline_news.substr(0, 150) }}....</p>
-                            <p class="fs-5 fw-bold">
-                                {{ item.created_at.substr(0, 10) }}
-                            </p>
-                        </div>
-                    </a>
-                </div>
-            </div>
+    <section class="listing-page">
+        <header class="listing-heading"><p class="eyebrow">Matra in the world</p><h1>News & press</h1><p>Studio updates, project milestones, and stories from our collaborators.</p></header>
+        <div class="listing-grid">
+            <article v-for="item in news" :key="item.id" class="editorial-card">
+                <a :href="`/news/detail/${projectSlug(item.headline_news)}`">
+                    <img :src="`${baseURL}/storage/news/${item.main_pic || item.logo_news}`" :alt="item.headline_news" loading="lazy" />
+                    <div class="editorial-card-copy"><time>{{ item.created_at?.slice(0, 10) }}</time><h2>{{ item.headline_news }}</h2><p v-html="excerpt(item.article_news)"></p></div>
+                </a>
+            </article>
         </div>
-    </div>
+        <p v-if="!news.length" class="text-center text-secondary">Studio updates will appear here soon.</p>
+    </section>
 </template>
 
 <script setup>
 import axios from "axios";
 import { ref, onMounted } from "vue";
+import { projectSlug } from "../utils/projectSlug";
 
 const news = ref([]);
 const baseURL = axios.defaults.baseURL;
-const urlnews = baseURL + "/public/api/newsall";
+const urlnews = baseURL + "/api/newsall";
+
+const excerpt = (html = "") => String(html).replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim().slice(0, 180) + "…";
 
 const getnews = async () => {
     try {

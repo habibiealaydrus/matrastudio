@@ -39,7 +39,7 @@ const router = createRouter({
             component: () => import("../views/WorkView.vue"),
         },
         {
-            path: "/work/detail/:id",
+            path: "/work/detail/:slug",
             name: "detail",
             component: () => import("../views/DetailView.vue"),
         },
@@ -49,7 +49,7 @@ const router = createRouter({
             component: () => import("../views/NewsView.vue"),
         },
         {
-            path: "/news/detail/:id",
+            path: "/news/detail/:slug",
             name: "newsdetail",
             component: () => import("../views/NewsDetailView.vue"),
         },
@@ -59,7 +59,7 @@ const router = createRouter({
             component: () => import("../views/BlogsView.vue"),
         },
         {
-            path: "/blog/detail/:id",
+            path: "/blog/detail/:slug",
             name: "blogdetail",
             component: () => import("../views/BlogDetailView.vue"),
         },
@@ -69,7 +69,7 @@ const router = createRouter({
             component: () => import("../views/EventsView.vue"),
         },
         {
-            path: "/event/detail/:id",
+            path: "/event/detail/:slug",
             name: "eventdetail",
             component: () => import("../views/EventDetailView.vue"),
         },
@@ -105,12 +105,16 @@ const router = createRouter({
     ],
 });
 
-router.beforeEach((to, from, next) => {
-    const authorized = JSON.parse(localStorage.getItem("authorized"));
+router.beforeEach((to) => {
+    let authorized = false;
+    try {
+        authorized = JSON.parse(localStorage.getItem("authorized")) === true;
+    } catch {
+        authorized = false;
+    }
 
-    if (to.meta.isAuth && !authorized) next({ name: "login" });
-    if (to.name === "login" && authorized) next({ path: "/admin" });
-    else next();
+    if (to.meta.isAuth && !authorized) return { name: "login" };
+    if (to.name === "login" && authorized) return { path: "/admin" };
 });
 
 export default router;

@@ -1,15 +1,14 @@
 <script setup>
-import { RouterLink, RouterView } from "vue-router";
+import { RouterView } from "vue-router";
 import Navigation from "@/components/Navigation.vue";
 </script>
 
 <template>
-    <div>
+    <div class="app-shell">
         <Navigation />
-
-        <div class="bg-dark" style="height: 95dvh">
+        <main class="app-main">
             <RouterView />
-        </div>
+        </main>
     </div>
 </template>
 

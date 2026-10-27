@@ -3,7 +3,7 @@
         <img
             :src="
                 baseURL +
-                `/public/storage/projectpicture/${detailproject.main_pic}`
+                `/storage/projectpicture/${detailproject.main_pic}`
             "
             alt=""
             class="w-100 img-fluid"
@@ -350,7 +350,7 @@
                     <img
                         :src="
                             baseURL +
-                            `/public/storage/projectpicture/${detailproject.pic1}`
+                            `/storage/projectpicture/${detailproject.pic1}`
                         "
                         alt=""
                         class="w-100 img-fluid"
@@ -361,7 +361,7 @@
                     <img
                         :src="
                             baseURL +
-                            `/public/storage/projectpicture/${detailproject.pic2}`
+                            `/storage/projectpicture/${detailproject.pic2}`
                         "
                         class="w-100 img-fluid"
                         alt=""
@@ -375,7 +375,7 @@
                     <img
                         :src="
                             baseURL +
-                            `/public/storage/projectpicture/${detailproject.pic3}`
+                            `/storage/projectpicture/${detailproject.pic3}`
                         "
                         alt=""
                         class="w-100 img-fluid"
@@ -389,7 +389,7 @@
                     <img
                         :src="
                             baseURL +
-                            `/public/storage/projectpicture/${detailproject.pic4}`
+                            `/storage/projectpicture/${detailproject.pic4}`
                         "
                         class="w-100 img-fluid"
                         alt=""
@@ -400,7 +400,7 @@
                     <img
                         :src="
                             baseURL +
-                            `/public/storage/projectpicture/${detailproject.pic5}`
+                            `/storage/projectpicture/${detailproject.pic5}`
                         "
                         class="w-100 img-fluid"
                         alt=""
@@ -414,7 +414,7 @@
                     <img
                         :src="
                             baseURL +
-                            `/public/storage/projectpicture/${detailproject.pic6}`
+                            `/storage/projectpicture/${detailproject.pic6}`
                         "
                         class="w-100 img-fluid"
                         alt=""
@@ -425,7 +425,7 @@
                     <img
                         :src="
                             baseURL +
-                            `/public/storage/projectpicture/${detailproject.pic7}`
+                            `/storage/projectpicture/${detailproject.pic7}`
                         "
                         class="w-100 img-fluid"
                         alt=""
@@ -459,7 +459,7 @@ const Water = ref([]);
 const Embodied = ref([]);
 
 const baseURL = axios.defaults.baseURL;
-const urldetail = baseURL + "/public/api/clientdetail/" + id;
+const urldetail = baseURL + "/api/clientdetail/" + id;
 
 const getdetailproject = async () => {
     try {

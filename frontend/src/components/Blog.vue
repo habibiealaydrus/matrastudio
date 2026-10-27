@@ -1,35 +1,28 @@
 <template>
-    <div class="container-fluid">
-        <div class="row bg-white">
-            <div class="col-md-4 " v-for="blog in blogs">
-                <div class="news px-5 shadow-sm p-3 mb-5 bg-body-tertiary rounde">
-                    <a
-                        :href="`/blog/detail/${blog.id}`"
-                        class="link-offset-2 link-underline link-underline-opacity-0"
-                        style="color: black"
-                    >
-                        <img
-                            :src="baseURL + `/public/storage/blog/${blog.main_img}`"
-                            alt=""
-                            class="img-fluid"
-                        />
-                        <h1>{{ blog.title_blog }}</h1>
-
-                        <div v-html="blog.article_blog.substr(0, 150)"></div>
-                    </a>
-                </div>
-            </div>
+    <section class="listing-page">
+        <header class="listing-heading"><p class="eyebrow">Notes from the studio</p><h1>Stories & ideas</h1><p>Perspectives on the places we make and the questions that shape them.</p></header>
+        <div class="listing-grid">
+            <article v-for="blog in blogs" :key="blog.id" class="editorial-card">
+                <a :href="`/blog/detail/${projectSlug(blog.title_blog)}`">
+                    <img :src="`${baseURL}/storage/blog/${blog.main_img}`" :alt="blog.title_blog" loading="lazy" />
+                    <div class="editorial-card-copy"><time>{{ blog.created_at?.slice(0, 10) }}</time><h2>{{ blog.title_blog }}</h2><p v-html="excerpt(blog.article_blog)"></p></div>
+                </a>
+            </article>
         </div>
-    </div>
+        <p v-if="!blogs.length" class="text-center text-secondary">Stories will appear here soon.</p>
+    </section>
 </template>
 
 <script setup>
 import axios from "axios";
 import { ref, onMounted } from "vue";
+import { projectSlug } from "../utils/projectSlug";
 
 const blogs = ref([]);
 const baseURL = axios.defaults.baseURL;
-const urlblog = baseURL + "/public/api/allblog";
+const urlblog = baseURL + "/api/allblog";
+
+const excerpt = (html = "") => String(html).replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim().slice(0, 180) + "…";
 
 const getblogs = async () => {
     try {

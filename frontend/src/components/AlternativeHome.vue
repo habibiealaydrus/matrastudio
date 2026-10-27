@@ -1,78 +1,50 @@
 <template>
-    <div class="container-fluid bannerhome">
-        <div class="row">
-            <div
-                class="homebannertext rounded-2 col-7 fs-1 position-absolute bottom-0 start-0"
-            >
-                <p class="pb-3">
-                    "We are creating meaningfull spaces with a focus on
-                    <span class="text-cycle text-start display-1 text-wrap">
-                        {{ textCycle }}"
-                    </span>
-                </p>
+    <section class="bannerhome" aria-labelledby="home-title">
+        <div class="home-hero-copy">
+            <h1 id="home-title">
+                <span class="hero-lead">We are creating meaningful spaces with a focus on</span>
+                <span class="hero-focus-slot" aria-live="polite">
+                    <Transition mode="out-in">
+                        <span :key="currentFocus" class="hero-focus">{{ currentFocus }}</span>
+                    </Transition>
+                </span>
+            </h1>
+            <div class="hero-actions">
+                <RouterLink class="button-primary" to="/work">
+                    Explore our work <span aria-hidden="true">↗</span>
+                </RouterLink>
+                <RouterLink class="button-ghost" to="/about">Meet Matra</RouterLink>
+                <a class="hero-scroll" href="#featured-projects">
+                    <span>Scroll to explore</span>
+                    <span class="hero-scroll-arrow" aria-hidden="true">↓</span>
+                </a>
             </div>
         </div>
-    </div>
+    </section>
 </template>
 
 <script setup>
-import { onMounted, ref } from "vue";
-const textCycle = ref();
+import { onMounted, onUnmounted, ref } from "vue";
+import { RouterLink } from "vue-router";
 
-const changetext = () => {
-    const messages = [
-        "Sustainibility",
-        "Green Building",
-        "Energy Efficiency",
-        "Community Well-being",
-    ];
-    let index = 0;
-    setInterval(() => {
-        textCycle.value = messages[index];
-        index = (index + 1) % messages.length;
-    }, 2500); // Change the text every 2.5 seconds
-};
+const focusWords = [
+    "Sustainability",
+    "Green Building",
+    "Energy Efficiency",
+    "Community Well-being",
+];
+const currentFocus = ref(focusWords[0]);
+let rotationTimer;
 
 onMounted(() => {
-    changetext();
+    let index = 0;
+    rotationTimer = window.setInterval(() => {
+        index = (index + 1) % focusWords.length;
+        currentFocus.value = focusWords[index];
+    }, 2000);
+});
+
+onUnmounted(() => {
+    window.clearInterval(rotationTimer);
 });
 </script>
-
-<style>
-.text-cycle {
-    animation: textCycle 10s infinite;
-    white-space: nowrap;
-    font-weight: bold;
-}
-
-@keyframes textCycle {
-    0% {
-        content: "Sustainibility";
-    }
-    25% {
-        content: "Green Building";
-    }
-    50% {
-        content: "Energy Efficiency";
-    }
-    75% {
-        content: "Community Well-being";
-    }
-    100% {
-        content: "Welcome";
-    }
-}
-.bannerhome {
-    background-image: url("../assets/img/homepage.jpg");
-    background-repeat: no-repeat, repeat;
-    background-size: cover;
-    background-position: center;
-    /* filter: grayscale(100%); */
-    height: 90vh;
-}
-.homebannertext {
-    /*background-color: rgba(255, 255, 255, 0.8);*/
-    color: whitesmoke;
-    padding: 1%;
-}
-</style>

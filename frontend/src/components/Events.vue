@@ -1,53 +1,32 @@
 <template>
-    <div class="container-fluid bg-white">
-        <div class="d-flex flex-wrap justify-content-center">
-            <div v-for="event in events">
-                <div class="news px-3">
-                    <a
-                        :href="`/event/detail/${event.id}`"
-                        class="link-offset-2 link-underline link-underline-opacity-0"
-                        style="color: black"
-                    >
-                        <div>
-                            <img
-                                :src="
-                                    baseURL +
-                                    `/public/storage/event/${event.pic_event}`
-                                "
-                                alt=""
-                                class="w-100"
-                            />
-                            <button
-                                class="btn btn-info mt-2"
-                                v-if="new Date(event.date) > today"
-                            >
-                                Incoming Event
-                            </button>
-                        </div>
-                        <h1>{{ event.title_event }}</h1>
-                        <div
-                            v-html="
-                                event.article_event.substring(0, 150) + '...'
-                            "
-                        ></div>
-                    </a>
-                </div>
-            </div>
+    <section class="listing-page">
+        <header class="listing-heading"><p class="eyebrow">Meet, share, learn</p><h1>Events</h1><p>Gatherings and conversations around design, culture, and a more sustainable future.</p></header>
+        <div class="listing-grid">
+            <article v-for="event in events" :key="event.id" class="editorial-card">
+                <a :href="`/event/detail/${projectSlug(event.title_event)}`">
+                    <img :src="`${baseURL}/storage/event/${event.pic_event}`" :alt="event.title_event" loading="lazy" />
+                    <div class="editorial-card-copy"><span class="meta">{{ event.date?.slice(0, 10) }} <template v-if="new Date(event.date) > today"> · Upcoming</template></span><h2>{{ event.title_event }}</h2><p v-html="excerpt(event.article_event)"></p></div>
+                </a>
+            </article>
         </div>
-    </div>
+        <p v-if="!events.length" class="text-center text-secondary">There are no events to show right now.</p>
+    </section>
 </template>
 
 <script setup>
 import axios from "axios";
 import { ref, onMounted } from "vue";
+import { projectSlug } from "../utils/projectSlug";
 
 const events = ref([]);
 const baseURL = axios.defaults.baseURL;
-const urlevent = baseURL + "/public/api/event";
+const urlevent = baseURL + "/api/event";
 
 const today = new Date();
 const date =
     today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
+
+const excerpt = (html = "") => String(html).replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim().slice(0, 180) + "…";
 
 const getevent = async () => {
     try {
